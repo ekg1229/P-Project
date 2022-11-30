@@ -3,7 +3,7 @@ import React from 'react';
 function Header() {
   return (
     <>
-    Header.jsx 실행 화면
+    Header.jsx 실행 화면dd
     </>
   );
 }
