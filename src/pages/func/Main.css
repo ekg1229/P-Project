@@ -1,0 +1,26 @@
+.wrapper{
+    display:flex;
+    flex-direction: column;
+    height:100vh;
+}
+/* .main-visual{
+    background-color:#282c34;
+    background-repeat: no-repeat;
+    background-size:100% 100%;
+    flex:1;
+
+} */
+.main_visual{
+    flex:1;
+    background:
+    /* top, transparent black, faked with gradient */ 
+    linear-gradient(
+      rgba(0, 0, 0, 0.7), 
+      rgba(0, 0, 0, 0.7)
+    ),
+    /* bottom, image */
+    url(https://nimage.newsway.co.kr/photo/2020/04/28/20200428000080_0700.png);
+}
+.main-text{
+    color:beige
+}

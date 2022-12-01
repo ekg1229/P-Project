@@ -1,0 +1,23 @@
+#footer{
+    clear:both;
+    height:50px;
+    width:100%;
+    bottom:0px;
+    background-color:#212529;
+    box-shadow: 0 0 20px;
+    }
+#footer .left{
+    padding:6px 0 0 10px;
+    float:left;
+    filter: grayscale(100%);
+}
+#footer .right{
+    float:right;
+    width:50%;
+}
+#footer .right p{
+    font-size:14px;
+    color:#999;
+    padding: 14px 10px 0 0;
+    text-align:right;
+}
