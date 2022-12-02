@@ -1,12 +1,12 @@
 import {React, useState, useEffect} from 'react';
-import { Link } from 'react-router-dom';
+import {Link} from 'react-router-dom';
 import axios from 'axios';
 import {Container, Col, Form, Card, Button} from 'react-bootstrap';
 
 //로그인 페이지
 function SignIn() {
-  const [id, setInputId] = useState('');
-  const [password, setPassword] = useState('');
+  const [id, setInputId] = useState("");
+  const [password, setPassword] = useState("");
 
   const handleInputId = (e) => {
     setInputId(e.target.value);
@@ -60,7 +60,7 @@ function SignIn() {
             <Form.Group id="email" className="mb-4">
               <Form.Label>아이디</Form.Label>
               <div className="form-floating mb-3">
-                <input type="email" className="form-control was-validate" id="id" placeholder="name@example.com" name="name" required maxLength="20" pattern="^[0-9a-zA-Z]([-_\.]?[0-9a-zA-Z])*@[0-9a-zA-Z]([-_\.]?[0-9a-zA-Z])*\.[a-zA-Z]{2,3}$" title="이메일을 입력하세요."onChange={handleInputId}/>
+                <input type="email" className="form-control was-validate" id="id" placeholder="name@example.com" name="name" required maxLength="20" pattern="^[0-9a-zA-Z]([-_\.]?[0-9a-zA-Z])*@[0-9a-zA-Z]([-_\.]?[0-9a-zA-Z])*\.[a-zA-Z]{2,3}$" title="이메일 주소를 입력하세요." onChange={handleInputId}/>
                 <label htmlFor="floatingInput" style={{color: "#BDBDBD"}}>이메일 주소를 입력하세요.</label>
                 <div className="valid-feedback">
                   올바른 입력입니다.
@@ -87,7 +87,7 @@ function SignIn() {
                 </div>
               </Form.Group>
               <div className="d-flex justify-content-between align-items-center mb-4"> 
-                <Card.Link href='/forgotinfo' className="small text-end" text-align='center'>비밀번호를 잊으셨나요?</Card.Link>
+                <Card.Link href='/forgotpw' className="small text-end" text-align='center'>비밀번호를 잊으셨나요?</Card.Link>
               </div>
             </Form.Group>
             {/* 로그인 관련 */}
