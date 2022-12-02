@@ -156,7 +156,7 @@ function SignUp() {
             <Form.Group id="email" className="mb-4" >
               <Form.Label>아이디</Form.Label>
               <div className="form-floating mb-3">
-                <input type="email" class="form-control was-validate" id="floatingInput" placeholder="name@example.com" name="name" required maxlength="20" pattern="^[0-9a-zA-Z]([-_\.]?[0-9a-zA-Z])*@[0-9a-zA-Z]([-_\.]?[0-9a-zA-Z])*\.[a-zA-Z]{2,3}$" onChange={handleInputId}/>
+                <input type="email" class="form-control was-validate" id="floatingInput" placeholder="name@example.com" name="name" required maxlength="20" pattern="^[0-9a-zA-Z]([-_\.]?[0-9a-zA-Z])*@[0-9a-zA-Z]([-_\.]?[0-9a-zA-Z])*\.[a-zA-Z]{2,3}$"title="이메일 주소를 입력하세요." onChange={handleInputId}/>
                 <label for="floatingInput" style={{color: "#BDBDBD"}}>이메일 주소를 입력해주세요</label>
                 <div className="valid-feedback">
                   올바른 입력입니다.
@@ -180,7 +180,7 @@ function SignUp() {
             <Form.Group id="confirmPassword" className="mb-4">
               <Form.Label>비밀번호 확인</Form.Label>
               <div class="form-floating">
-                <input type="password" class="form-control was-validate" id="rePassword" placeholder="Password" name="pwd" required maxlength="32" pattern="[0-9a-zA-Z]{8,}$" onChange={handleInputPassword}/>
+                <input type="password" class="form-control was-validate" id="rePassword" placeholder="Password" name="pwd" required maxlength="32" pattern="[0-9a-zA-Z]{8,}$" title="비밀번호를 다시 입력해주세요." onChange={handleInputPassword}/>
                 <label for="floatingPassword" style={{color: "#BDBDBD"}}>비밀번호를 재입력해주세요</label>
                 <div class="valid-feedback" id="CheckTrue">
                   비밀번호가 일치합니다.
