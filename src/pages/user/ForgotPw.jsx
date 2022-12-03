@@ -88,15 +88,24 @@ function ForgotInfo() {
               <h2></h2> {/* 여백을 위해 추가 */}
             </Form.Group>
             
-            {/* 비밀번호 찾기 관련 */}
+            {/* 비밀번호 초기화 관련 */}
             <Button variant="primary" type="submit" className="w-100" onClick={onClickForgot}>
-              비밀번호 찾기
+              비밀번호 초기화
             </Button>
           </Form>
 
-          <div style={{position: "flex", justifyContent: "center", alignItems: "center", }} className="mt-4">    {/*className="d-flex justify-content-center align-items-center mt-4"*/}
-            <span className="fw-normal" style={{color: "red", float: "right"}}>
+          {/* <div style={{position: "flex", justifyContent: "center", alignItems: "center", }} className="mt-4">
+            <span style={{color: "red", float: "right"}}>
               ※ 변경된 비밀번호는 아이디와 같습니다.
+            </span>
+          </div> */}
+
+          <div className="d-flex justify-content-center align-items-center mt-4">
+            <span className="fw-normal">
+              비밀번호가 기억나셨나요? &nbsp;
+              <Link to="/signin" className="fw-bold">
+                {`로그인`}
+              </Link>
             </span>
           </div>
         </div>

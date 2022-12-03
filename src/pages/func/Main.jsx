@@ -2,6 +2,7 @@ import React from 'react';
 import Header from '../../components/Header';
 import Footer from '../../components/Footer';
 import './Main.css';
+import MainDesign from './MainDesign';
 
 //메인 페이지
 function Main() {
@@ -9,7 +10,7 @@ function Main() {
   <div className="wrapper">
     <Header/>
    <section className="main_visual">
-    Main.jsx 실행 화면
+    <MainDesign/>
     </section>
     <Footer/>
     </div>

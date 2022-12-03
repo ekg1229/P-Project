@@ -50,6 +50,7 @@ function SignIn() {
 
   return (
     <Container>
+      <link rel="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css"></link>
       <Col xs={12} className="d-flex align-items-center justify-content-center">
         <div className="bg-white shadow-soft border rounded border-light p-4 p-lg-5 w-100 fmxw-500">
           <div className="text-center text-md-center mb-4 mt-md-0">
@@ -58,7 +59,7 @@ function SignIn() {
           <Form className="mt-4">
             {/* 아이디 관련 */}
             <Form.Group id="email" className="mb-4">
-              <Form.Label>아이디</Form.Label>
+              <Form.Label style={{fontWeight: "bold"}}>이메일</Form.Label>
               <div className="form-floating mb-3">
                 <input type="email" className="form-control was-validate" id="id" placeholder="name@example.com" name="name" required maxLength="20" pattern="^[0-9a-zA-Z]([-_\.]?[0-9a-zA-Z])*@[0-9a-zA-Z]([-_\.]?[0-9a-zA-Z])*\.[a-zA-Z]{2,3}$" title="이메일 주소를 입력하세요." onChange={handleInputId}/>
                 <label htmlFor="floatingInput" style={{color: "#BDBDBD"}}>이메일 주소를 입력하세요.</label>
@@ -74,7 +75,8 @@ function SignIn() {
             {/* 비밀번호 관련 */}
             <Form.Group>
               <Form.Group id="password" className="mb-4">
-                <Form.Label>비밀번호</Form.Label>
+                <Form.Label style={{fontWeight: "bold"}}>비밀번호</Form.Label>
+                <Card.Link href='/forgotpw' className="small text-end" style={{textAlign:"center", float:"right"}}>비밀번호를 잊으셨나요?</Card.Link>
                 <div className="form-floating">
                   <input type="password" className="form-control was-validate" id="password" placeholder="Password" name="pwd" required maxLength="32" pattern="[0-9a-zA-Z]{8,}$" title="비밀번호는 8자 이상의 영문 대소문자와 숫자로 이루어질 수 있습니다." onChange={handleInputPassword}/>
                   <label htmlFor="floatingPassword" style={{color: "#BDBDBD"}}>비밀번호를 입력하세요</label>
@@ -84,11 +86,12 @@ function SignIn() {
                   <div className="invalid-feedback">
                     5글자 이상 10글자 이하로 작성해 주세요.
                   </div>
+                  <div class="eyes">
+                    <i class="fas fa-eye"></i>
+                  </div>
                 </div>
               </Form.Group>
-              <div className="d-flex justify-content-between align-items-center mb-4"> 
-                <Card.Link href='/forgotpw' className="small text-end" text-align='center'>비밀번호를 잊으셨나요?</Card.Link>
-              </div>
+              
             </Form.Group>
             {/* 로그인 관련 */}
             <Button variant="primary" type="submit" className="w-100" onClick={onClickLogin}>
