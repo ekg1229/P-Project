@@ -59,7 +59,7 @@ function SignIn() {
           <Form className="mt-4">
             {/* 아이디 관련 */}
             <Form.Group id="email" className="mb-4">
-              <Form.Label style={{fontWeight: "bold"}}>이메일</Form.Label>
+              <Form.Label>이메일</Form.Label>
               <div className="form-floating mb-3">
                 <input type="email" className="form-control was-validate" id="id" placeholder="name@example.com" name="name" required maxLength="20" pattern="^[0-9a-zA-Z]([-_\.]?[0-9a-zA-Z])*@[0-9a-zA-Z]([-_\.]?[0-9a-zA-Z])*\.[a-zA-Z]{2,3}$" title="이메일 주소를 입력하세요." onChange={handleInputId}/>
                 <label htmlFor="floatingInput" style={{color: "#BDBDBD"}}>이메일 주소를 입력하세요.</label>
@@ -75,7 +75,7 @@ function SignIn() {
             {/* 비밀번호 관련 */}
             <Form.Group>
               <Form.Group id="password" className="mb-4">
-                <Form.Label style={{fontWeight: "bold"}}>비밀번호</Form.Label>
+                <Form.Label>비밀번호</Form.Label>
                 <Card.Link href='/forgotpw' className="small text-end" style={{textAlign:"center", float:"right"}}>비밀번호를 잊으셨나요?</Card.Link>
                 <div className="form-floating">
                   <input type="password" className="form-control was-validate" id="password" placeholder="Password" name="pwd" required maxLength="32" pattern="[0-9a-zA-Z]{8,}$" title="비밀번호는 8자 이상의 영문 대소문자와 숫자로 이루어질 수 있습니다." onChange={handleInputPassword}/>
