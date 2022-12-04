@@ -10,6 +10,7 @@ import SignUp from './pages/user/SignUp'; //회원가입 페이지
 import ForgotPw from './pages/user/ForgotPw'; //아이디/비밀번호 찾기 페이지
 import EditInfo from './pages/user/EditInfo'; //개인정보 수정 페이지
 import CheckInfo from './pages/user/CheckInfo'; //개인정보 확인 페이지
+import UserInfo from './pages/user/UserInfo'; //내 정보 페이지
 
 //import func pages
 import Main from './pages/func/Main'; //메인 페이지
@@ -27,6 +28,7 @@ root.render(
       <Route path="forgotpw" element={<ForgotPw/>}/>
       <Route path="editinfo" element={<EditInfo/>}/>
       <Route path="checkinfo" element={<CheckInfo/>}/>
+      <Route path="userinfo" element={<UserInfo/>}/>
 
       <Route path="main" element={<Main/>}/>
       <Route path="general" element={<General/>}/>
