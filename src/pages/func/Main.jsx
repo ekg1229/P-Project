@@ -1,11 +1,19 @@
 import React from 'react';
+import Header from '../../components/Header';
+import Footer from '../../components/Footer';
+import './Main.css';
+import MainDesign from './MainDesign';
 
 //메인 페이지
 function Main() {
   return (
-    <>
-    Main.jsx 실행 화면
-    </>
+  <div className="wrapper">
+    <Header/>
+   <section className="main_visual">
+    <MainDesign/>
+    </section>
+    <Footer/>
+    </div>
   );
 }
 

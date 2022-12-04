@@ -7,7 +7,6 @@ import {Container, Col, Form, Button} from 'react-bootstrap';
 function SignUp() {
   const [id, setInputId] = useState("");
   const [password, setInputPassword] = useState("");
-  const [imei, setInputImei] = useState("");
   const [name, setInputName] = useState("");
   const [age, setInputAge] = useState("");
 
@@ -17,10 +16,6 @@ function SignUp() {
 
   const handleInputPassword = (e) => {
       setInputPassword(e.target.value);
-  };
-
-  const handleInputImei = (e) => {
-    setInputImei(e.target.value);
   };
 
   const handleInputName = (e) => {
@@ -43,7 +38,6 @@ function SignUp() {
       //axios body에 보낼 데이터
       id: id,
       password: password,
-      imei: imei,
       name: name,
       age: age
     },
@@ -95,55 +89,6 @@ function SignUp() {
     return <confirm1/>
   }
 
-  const confirmImei = () => {
-    var imei = document.getElementById('imei').value;
-    var cfp3 = 'false'
-
-    axios.post('/api/login', {
-      //axios body에 보낼 데이터
-      imei: imei,
-    },
-    {
-      //axios header
-      headers:{
-        'Content-Type': 'application/json',
-        //'Authorization' : `Bearer ${accessToken}`
-      }
-    })
-    .then((res) => {
-      console.log(res)
-      if(res.status==='true'){
-        //link to dashboard
-        console.log("response success")
-        cfp3='true'
-      }
-    })
-    .catch(function (err){
-      console.log(err)
-    })
-
-    if(imei===''){ //null input
-      document.getElementById("signup").disabled = true;
-    }
-    else if( cfp3==='true' ) { //'ll fix that later
-      //alert("유효하지 않은 IMEI입니다");
-      document.getElementById("signup").disabled = true;
-      document.getElementById("CheckTrue2").style.display="none"
-      document.getElementById("CheckFalse2").style.display="block"
-      document.getElementById("imei").readOnly= false;
-    }
-    else{ //correct imei
-      //alert("유효한 IMEI입니다");
-      if(document.getElementById('Password').readOnly===true){
-      document.getElementById("signup").disabled = false;}
-      document.getElementById("CheckTrue2").style.display="block"
-      document.getElementById("CheckFalse2").style.display="none"
-      document.getElementById("confirmimei").disabled=true
-      document.getElementById("imei").readOnly= true;
-    }
-    return <confirm2/>
-  }
-
   return (
     <Container>
       <Col xs={12} className="d-flex align-items-center justify-content-center">
@@ -156,7 +101,7 @@ function SignUp() {
             <Form.Group id="email" className="mb-4" >
               <Form.Label>아이디</Form.Label>
               <div className="form-floating mb-3">
-                <input type="email" class="form-control was-validate" id="floatingInput" placeholder="name@example.com" name="name" required maxlength="20" pattern="^[0-9a-zA-Z]([-_\.]?[0-9a-zA-Z])*@[0-9a-zA-Z]([-_\.]?[0-9a-zA-Z])*\.[a-zA-Z]{2,3}$" onChange={handleInputId}/>
+                <input type="email" class="form-control was-validate" id="floatingInput" placeholder="name@example.com" name="name" required maxlength="20" pattern="^[0-9a-zA-Z]([-_\.]?[0-9a-zA-Z])*@[0-9a-zA-Z]([-_\.]?[0-9a-zA-Z])*\.[a-zA-Z]{2,3}$"title="이메일 주소를 입력하세요." onChange={handleInputId}/>
                 <label for="floatingInput" style={{color: "#BDBDBD"}}>이메일 주소를 입력해주세요</label>
                 <div className="valid-feedback">
                   올바른 입력입니다.
@@ -180,7 +125,7 @@ function SignUp() {
             <Form.Group id="confirmPassword" className="mb-4">
               <Form.Label>비밀번호 확인</Form.Label>
               <div class="form-floating">
-                <input type="password" class="form-control was-validate" id="rePassword" placeholder="Password" name="pwd" required maxlength="32" pattern="[0-9a-zA-Z]{8,}$" onChange={handleInputPassword}/>
+                <input type="password" class="form-control was-validate" id="rePassword" placeholder="Password" name="pwd" required maxlength="32" pattern="[0-9a-zA-Z]{8,}$" title="비밀번호를 다시 입력해주세요." onChange={handleInputPassword}/>
                 <label for="floatingPassword" style={{color: "#BDBDBD"}}>비밀번호를 재입력해주세요</label>
                 <div class="valid-feedback" id="CheckTrue">
                   비밀번호가 일치합니다.
@@ -192,25 +137,6 @@ function SignUp() {
               <h2></h2> {/* 여백을 위해 추가 */}
               <div>
                 <Button variant="primary" type="submit" id="confi" onClick={confirmPw} onSubmit={handleInputPassword}>비밀번호 확인</Button>
-              </div>
-            </Form.Group>
-
-            {/* IMEI 관련 */}
-            <Form.Group id="confirmimei" className="mb-4">
-              <Form.Label>IMEI</Form.Label>
-              <div class="form-floating">
-                <input type="text" class="form-control was-validate" id="imei" placeholder="Password" name="imei" required maxlength="10" pattern="[0-9a-zA-Z]{10}" title="IMEI는 10자의 숫자, 영문 대소문자로 이루어집니다." onChange={handleInputImei} readOnly={false}/>
-                <label for="floatingPassword" style={{color: "#BDBDBD"}}>IMEI를 입력해주세요</label>
-                <div class="valid-feedback" id="CheckTrue2">
-                  유효한 IMEI입니다.
-                </div>
-                <div class="invalid-feedback" id="CheckFalse2">
-                  유효하지 않은 IMEI입니다.
-                </div>
-              </div>
-              <h2></h2> {/* 여백을 위해 추가 */}
-              <div>
-                <Button variant="primary" type="submit" onClick={confirmImei} id='confi2'>IMEI 확인</Button>
               </div>
             </Form.Group>
 
@@ -242,7 +168,7 @@ function SignUp() {
             <span className="fw-normal">
               이미 회원이신가요? &nbsp;
               <Link to="/signin" className="fw-bold">
-                {`로그인 페이지로 이동`}
+                {`로그인`}
               </Link>
             </span>
           </div>

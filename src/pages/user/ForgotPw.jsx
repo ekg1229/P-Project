@@ -6,14 +6,9 @@ import {Container, Col, Form, Button} from 'react-bootstrap';
 //비밀번호 찾기 페이지
 function ForgotInfo() {
   const [id, setId] = useState("");
-  const [imei, setImei] = useState("");
 
   const handleId = (e) => {
     setId(e.target.value);
-  };
-
-  const handleImei = (e) => {
-    setImei(e.target.value);
   };
 
   const onClickForgot = (e) => {
@@ -27,7 +22,6 @@ function ForgotInfo() {
     axios.post('/api/auth/register', {
       //axios body에 보낼 데이터
       id: id,
-      imei: imei,
     },
     {
       //axios header
@@ -71,22 +65,6 @@ function ForgotInfo() {
                 </div>
               </div>
             </Form.Group>
-
-            {/* IMEI 관련 */}
-            <Form.Group id="confirmimei" className="mb-4">
-              <Form.Label>IMEI</Form.Label>
-              <div class="form-floating">
-                <input type="text" class="form-control was-validate" id="imei" placeholder="Password" name="imei" required maxlength="10" pattern="[0-9a-zA-Z]{10}" title="IMEI는 10자의 숫자, 영문 대소문자로 이루어집니다." onChange={handleImei} readOnly={false}/>
-                <label for="floatingPassword" style={{color: "#BDBDBD"}}>IMEI를 입력해주세요</label>
-                <div class="valid-feedback" id="CheckTrue2">
-                  유효한 IMEI입니다.
-                </div>
-                <div class="invalid-feedback" id="CheckFalse2">
-                  유효하지 않은 IMEI입니다.
-                </div>
-              </div>
-              <h2></h2> {/* 여백을 위해 추가 */}
-            </Form.Group>
             
             {/* 비밀번호 찾기 관련 */}
             <Button variant="primary" type="submit" className="w-100" onClick={onClickForgot}>
@@ -94,9 +72,18 @@ function ForgotInfo() {
             </Button>
           </Form>
 
-          <div style={{position: "flex", justifyContent: "center", alignItems: "center", }} className="mt-4">    {/*className="d-flex justify-content-center align-items-center mt-4"*/}
-            <span className="fw-normal" style={{color: "red", float: "right"}}>
+          {/* <div style={{position: "flex", justifyContent: "center", alignItems: "center", }} className="mt-4">
+            <span style={{color: "red", float: "right"}}>
               ※ 변경된 비밀번호는 아이디와 같습니다.
+            </span>
+          </div> */}
+
+          <div className="d-flex justify-content-center align-items-center mt-4">
+            <span className="fw-normal">
+              비밀번호가 기억나셨나요? &nbsp;
+              <Link to="/signin" className="fw-bold">
+                {`로그인`}
+              </Link>
             </span>
           </div>
         </div>
