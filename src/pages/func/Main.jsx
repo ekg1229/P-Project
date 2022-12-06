@@ -1,7 +1,7 @@
 import React from 'react';
 import Header from '../../components/Header';
 import Footer from '../../components/Footer';
-import './Main.css';
+import '../../styles/Main.css';
 import MainDesign from './MainDesign';
 
 //메인 페이지

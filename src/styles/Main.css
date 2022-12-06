@@ -27,6 +27,7 @@
 
 .main_page_wrapper{
     margin-top:30px;
+    margin-bottom: 30px;
     border: 1px solid #282c34;
     padding: 30px;
     background-color:#282c34;
@@ -55,6 +56,7 @@
     text-align: center;
     border-radius: 20;
     margin-left:auto;
+    margin-right:auto;
     align-items: center;
     justify-content: center;
     box-shadow: 10px;
@@ -75,3 +77,27 @@
     color:white;
     font-family:"배달의민족 주아";
 }
+.main_dif_title{
+    display:flex;
+    flex-direction: column;
+    margin-top:400px;
+    color:white;
+    font-family:"배달의민족 주아";
+}
+.main_dif_text{
+    margin-top:20px;
+    color:white;
+    font-family:"배달의민족 주아";
+}
+.btn_login{
+    color: "white";
+    background: "grey";
+    margin-top: 50px;
+    padding: ".2rem .75rem";
+    border: "1px solid grey";
+    border-Radius: "30px";
+    font-size: "1rem";
+    line-Height:1.5;
+    
+    font-family:"배달의민족 주아";
+  }

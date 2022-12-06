@@ -5,6 +5,7 @@ import {Container, Col, Form, Card, Button} from 'react-bootstrap';
 
 //로그인 페이지
 function SignIn() {
+  //const [accessToken, setAccessToken] = useState("");
   const [id, setInputId] = useState("");
   const [password, setPassword] = useState("");
 
@@ -21,12 +22,14 @@ function SignIn() {
     console.log('Click login');
   }
 
-  const useEffect=(() => {
+  // login 버튼 클릭 이벤트
+  const handleLogin = () => {
+    console.log("click");
     //axios 통신
-    axios.post('/api/signin', {
+    axios.post('http://127.0.0.1:8080/api/auth/login', {
       //axios body
       id: id,
-      password: password,
+      password: password
     },
     {
       //axios header
@@ -36,17 +39,17 @@ function SignIn() {
       }
     })
     .then((res) => {
-      console.log(res);
+      console.log("success");
+      console.log(res.json());
 
-      if(res.status==='true'){
-        //link to main page
-        console.log("response success");
+      if(res.ACCESS_TOKEN) {
+        localStorage.setItem('access-token', JSON.stringify());
       }
     })
     .catch((err) => {
       console.log(err)
     })
-  }, []);
+  }
 
   return (
     <Container>
@@ -94,7 +97,7 @@ function SignIn() {
               
             </Form.Group>
             {/* 로그인 관련 */}
-            <Button variant="primary" type="submit" className="w-100" onClick={onClickLogin}>
+            <Button formMethod='POST' variant="primary" type="submit" className="w-100" onClick={handleLogin}>
               로그인
             </Button>
           </Form>
