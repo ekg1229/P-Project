@@ -1,6 +1,5 @@
 import React, {useState, useEffect} from 'react';
 import {Container, Col, Form, Button} from 'react-bootstrap';
-import setAuthorizationToken from '../../utils/logout';
 import axios from 'axios';
 
 //개인정보 확인 페이지
@@ -70,6 +69,12 @@ function EditPw() {
     console.log(<confirm1/>);
     return <confirm1/>
   }
+
+  useEffect(()=>{
+    return () => {
+      console.log("비밀번호 변경 페이지 종료");
+    }
+  }, []);
 
   return (
     <Container>
