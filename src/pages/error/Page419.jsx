@@ -1,5 +1,5 @@
 import React from 'react';
-import "../../styles/error/Page404.css";
+import "../../styles/error/Page419.css";
 
 function Page419() {
   return (
