@@ -15,15 +15,15 @@ function SignUp() {
   };
 
   const handleInputPassword = (e) => {
-      setInputPassword(e.target.value);
+    setInputPassword(e.target.value);
   };
 
   const handleInputName = (e) => {
-  setInputName(e.target.value);
+    setInputName(e.target.value);
   };
 
   const handleInputAge = (e) => {
-  setInputAge(e.target.value);
+    setInputAge(e.target.value);
   };
 
   const handleSubmit = (e) => {
