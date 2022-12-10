@@ -1,4 +1,4 @@
-import {React, useState, useEffect} from 'react';
+import {React, useState} from 'react';
 import {Link} from 'react-router-dom';
 import axios from 'axios';
 import {Container, Col, Form, Button} from 'react-bootstrap';
@@ -29,14 +29,10 @@ function SignUp() {
   const handleSubmit = (e) => {
     e.preventDefault(); //submit default 제출 막음
     console.log('You clicked submit.');
-  }
-
-  const useEffect = (() => {
-    console.log("start");
 
     axios.post('/api/auth/register', {
       //axios body에 보낼 데이터
-      id: id,
+      email: id,
       password: password,
       name: name,
       age: age
@@ -44,22 +40,21 @@ function SignUp() {
     {
       //axios header
       headers:{
+        withCredentials: true,
         'Content-Type': 'application/json',
         //'Authorization' : `Bearer ${accessToken}`
       }
     })
     .then((res) => {
+      console.log("success");
       console.log(res)
-      if(res.state==='true'){
-        console.log("response success")
-        //go to signin page
-        window.location.href="/signin"
-      }
+      window.location.href="/signin" //로그인 페이지로 이동
     })
     .catch((err) => {
+      console.log("error");
       console.log(err)
     })
-  }, []);
+  }
 
   const confirmPw = () => {
     var pw = document.getElementById("Password").value;
@@ -70,17 +65,14 @@ function SignUp() {
     }
     else if(pw !== rpw){ //not correct
       document.getElementById("signup").disabled = true; //제출 금지
-        document.getElementById("CheckTrue").style.display="none" //result of confirm print
-        document.getElementById("CheckFalse").style.display="block"
-        document.getElementById("Password").readOnly= false;
-        document.getElementById("rePassword").readOnly= false;
+      document.getElementById("CheckTrue").style.display="none" //result of confirm print
+      document.getElementById("CheckFalse").style.display="block"
+      document.getElementById("Password").readOnly= false;
+      document.getElementById("rePassword").readOnly= false;
     }
     else{
       //alert("비밀번호가 일치합니다");
-      if(document.getElementById('imei').readOnly===true){ //imei 입력창이 잠금되었다면
-        document.getElementById("signup").disabled = false; 
-      }//IMEI입력창이 비활성화 되었다면 회원가입버튼활성화(비밀번호 검증과 imei검증이 끝났으므로)
-  
+      document.getElementById("signup").disabled = false; //회원가입 버튼 활성화(비밀번호 검증이 끝났으므로)
       document.getElementById("CheckTrue").style.display="block" //result of confirm print
       document.getElementById("CheckFalse").style.display="none"
       document.getElementById("Password").readOnly= true; //비밀번호 입력 수정 불가
@@ -136,7 +128,7 @@ function SignUp() {
               </div>
               <h2></h2> {/* 여백을 위해 추가 */}
               <div>
-                <Button variant="primary" type="submit" id="confi" onClick={confirmPw} onSubmit={handleInputPassword}>비밀번호 확인</Button>
+                <Button variant="primary" id="confi" onClick={confirmPw}>비밀번호 확인</Button>
               </div>
             </Form.Group>
 
@@ -159,7 +151,7 @@ function SignUp() {
             </Form.Group>
 
             {/* 회원가입 관련 */}
-            <Button variant="primary" type="submit" className="w-100" id="signup" disabled={true}>
+            <Button variant="primary" type="submit" className="w-100" id="signup" disabled={true} onClick={handleSubmit}>
               회원가입
             </Button>
           </Form>
