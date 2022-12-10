@@ -1,22 +1,37 @@
-import React from 'react';
-import {Container, Col} from 'react-bootstrap';
+import React, { useState, useEffect } from 'react';
+import {Container, Nav} from 'react-bootstrap';
 import Header from '../../components/Header';
 import Footer from '../../components/Footer';
+import setAuthorizationToken from '../../utils/setAuthorizationToken';
+import CheckInfo from './CheckInfo';
+import EditPw from './EditPw';
+import EditImei from './EditImei';
+import "../../styles/user/UserInfo.css";
+
+import axios from 'axios';
 
 //내 정보 페이지
 function UserInfo() {
+  const [tab, setTab] = useState(0);
+
   return (
     <div className="wrapper">
       <Header/>
+      <section className="main_visual">
       <Container>
-        <Col xs={12} className="d-flex align-items-center justify-content-center">
-          <div className="bg-white shadow-soft border rounded border-light p-4 p-lg-5 w-100 fmxw-500">
-            <div className="text-center text-md-center mb-4 mt-md-0">
-              <h3 className="mb-0">내 정보 페이지</h3>
-            </div>
-          </div>
-        </Col>
+        <Nav className="mt-5 mb-3" variant="tabs" defaultActiveKey="link-0">
+          <Nav.Item>
+            <Nav.Link eventKey="link-0" onClick={()=>{setTab(0)}}>개인정보 수정/확인</Nav.Link>
+          </Nav.Item>
+          <Nav.Item>
+            <Nav.Link eventKey="link-1" onClick={()=>{setTab(1)}}>비밀번호 변경</Nav.Link>
+          </Nav.Item>
+          <Nav.Item>
+            <Nav.Link eventKey="link-2" onClick={()=>{setTab(2)}}>Serial 추가/삭제</Nav.Link>
+          </Nav.Item>
+        </Nav>
       </Container>
+      </section>
       <Footer/>
     </div>
   );

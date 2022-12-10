@@ -2,6 +2,8 @@ import {React, useState, useEffect} from 'react';
 import {Link} from 'react-router-dom';
 import axios from 'axios';
 import {Container, Col, Form, Card, Button} from 'react-bootstrap';
+import setAuthorizationToken from "../../utils/setAuthorizationToken";
+import jwt_decode from "jwt-decode";
 
 //로그인 페이지
 function SignIn() {
@@ -21,32 +23,39 @@ function SignIn() {
     console.log('Click login');
   }
 
-  const useEffect=(() => {
+  // login 버튼 클릭 이벤트
+  const handleLogin = () => {
+    console.log("click");
     //axios 통신
-    axios.post('/api/signin', {
-      //axios body
-      id: id,
-      password: password,
+    axios.post('/api/auth/login', {
+      email: id,
+      password: password
     },
     {
-      //axios header
-      headers:{
-        'Content-Type': 'application/json',
-        // 'Authorization' : `Bearer ${accessToken}`
+      headers: {
+        withCredentials: true,
+        "Content-Type": `application/json`,
       }
     })
     .then((res) => {
+      console.log("success");
       console.log(res);
+      const {accessToken} = JSON.stringify(res.data.accessToken);
+      axios.defaults.headers.common['Authorization'] = `Bearer ${accessToken}`;
 
-      if(res.status==='true'){
-        //link to main page
-        console.log("response success");
+      //token을 LS에 저장
+      localStorage.setItem("access_token", res.data.accessToken);
+      localStorage.setItem("refresh_token", res.data.refreshToken);
+      
+      if (res.status === 200) {
+        window.location.href = "/main";
       }
     })
     .catch((err) => {
+      console.log("error");
       console.log(err)
     })
-  }, []);
+  }
 
   return (
     <Container>
@@ -94,7 +103,7 @@ function SignIn() {
               
             </Form.Group>
             {/* 로그인 관련 */}
-            <Button variant="primary" type="submit" className="w-100" onClick={onClickLogin}>
+            <Button variant="primary" className="w-100" onClick={handleLogin}>
               로그인
             </Button>
           </Form>

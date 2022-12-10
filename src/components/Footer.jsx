@@ -1,6 +1,6 @@
 import React from 'react';
 import gachon from '../images/gachon.png';
-import "./Footer.css";
+import "../styles/Footer.css";
 
 function Footer() {
   return (
