@@ -1,0 +1,103 @@
+.wrapper{
+    display:flex;
+    flex-direction: column;
+    height:100vh;
+}
+/* .main-visual{
+    background-color:#282c34;
+    background-repeat: no-repeat;
+    background-size:100% 100%;
+    flex:1;
+
+} */
+.main_visual{
+    flex:1;
+    background:
+    /* top, transparent black, faked with gradient */ 
+    linear-gradient(
+      rgba(0, 0, 0, 0.7), 
+      rgba(0, 0, 0, 0.7)
+    ),
+    /* bottom, image */
+    url(https://nimage.newsway.co.kr/photo/2020/04/28/20200428000080_0700.png);
+}
+.main-text{
+    color:beige
+}
+
+.main_page_wrapper{
+    margin-top:30px;
+    margin-bottom: 30px;
+    border: 1px solid #282c34;
+    padding: 30px;
+    background-color:#282c34;
+    width:80%;
+    opacity: 0.9;
+    text-align: center;
+    display:table;
+    margin-left:auto;
+    margin-right:auto;
+    border-radius: 15px;
+   
+}
+.main_title{
+    text-align: center;
+    font-size:70px;
+    color:black;
+    /* font-family:"Black Han Sans Regular"; */
+    font-family:"배달의민족 주아";
+}
+
+.profile{
+    margin:20px;
+    padding:8;
+    display:flex;
+    flex-direction: column;
+    text-align: center;
+    border-radius: 20;
+    margin-left:auto;
+    margin-right:auto;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 10px;
+}
+.card_text{
+    text-align:left;
+}
+.main_outline_title{
+    display:flex;
+    flex-direction: column;
+    margin-top:200px;
+    color:white;
+    font-family:"배달의민족 주아";
+    
+}
+.main_outline_text{
+    margin-top:20px;
+    color:white;
+    font-family:"배달의민족 주아";
+}
+.main_dif_title{
+    display:flex;
+    flex-direction: column;
+    margin-top:400px;
+    color:white;
+    font-family:"배달의민족 주아";
+}
+.main_dif_text{
+    margin-top:20px;
+    color:white;
+    font-family:"배달의민족 주아";
+}
+.btn_login{
+    color: "white";
+    background: "grey";
+    margin-top: 50px;
+    padding: ".2rem .75rem";
+    border: "1px solid grey";
+    border-Radius: "30px";
+    font-size: "1rem";
+    line-Height:1.5;
+    
+    font-family:"배달의민족 주아";
+  }
