@@ -11,7 +11,7 @@ function EditInfo() {
 
   //개인정보 확인
   const getData = () => {
-    axios.get("http://localhost:8080/api/auth/personelInfo")
+    axios.get("/api/auth/personelInfo")
     .then(res => {
       console.log("success");
       setEmail(res.data.email);
@@ -31,6 +31,12 @@ function EditInfo() {
       console.log("개인정보 확인 페이지 종료");
     }
   }, []);
+
+  //개인정보 수정 페이지로 이동
+  const moveEditInfo = () => {
+    console.log("sssssssssssss");
+    let tab = "2";
+  }
 
   return (
     <Container>
@@ -66,7 +72,7 @@ function EditInfo() {
             </Form.Group>
 
             {/* 수정 관련 */}
-            <Button variant="primary" className="w-100"s>
+            <Button variant="primary" className="w-100" onClick={moveEditInfo}>
               개인정보 수정 페이지로 이동
             </Button>
           </Form>
