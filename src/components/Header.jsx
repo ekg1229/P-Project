@@ -2,6 +2,7 @@ import React from 'react';
 import { Navbar, Nav, NavDropdown} from 'react-bootstrap';
 import blockchainpng_logo from '../images/blockchainpng_logo.png';
 import '../styles/Header.css';
+import logout from '../utils/logout';
 
 function Header() {
   return (
@@ -19,8 +20,8 @@ function Header() {
       </NavDropdown>
       </Nav>
       <Nav>
-        <Nav.Link href="CheckInfo">내 정보</Nav.Link>
-        <Nav.Link href="main">로그아웃</Nav.Link> 
+        <Nav.Link href="userinfo">내 정보</Nav.Link>
+        <Nav.Link href="signin" onClick={logout}>로그아웃</Nav.Link> 
         <Nav.Link href="signup">회원가입</Nav.Link>
       </Nav>
     </Navbar.Collapse>

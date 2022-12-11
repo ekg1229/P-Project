@@ -6,30 +6,38 @@ import AccidentCard from './AccidentCard';
 import axios from 'axios';
 
 
+
 const AccidentCardList = (card) => {
 
-    const [cardData, setCardData]=useState([]);
-    const dataurl='../sampleData.json';
+  const [cardData, setCardData]=useState([]);
+  const dataurl='../sampleData.json';
 
-    useEffect(()=>{
-        axios.get(dataurl)
-        .then(res=>setCardData(res.data))
-    },[])
- 
+  useEffect(()=>{
+      axios.get(dataurl)
+      .then(res=>setCardData(res.data))
+  },[])
+  
+  // card 날짜 최신순 정렬
+  function date_order(a,b){
+    const dateA = new Date(a['date']).getTime();
+    const dateB = new Date(b['date']).getTime();
+    return dateA < dateB ? 1 : -1;
+  }
+  cardData.sort(date_order);
+
   return (
-    <div className="card_area">
-            <ul className="card_wrapper">
-                {cardData.map((card) =><AccidentCard data={card}
-                key={card.id}/>
-                )}
+  <div className="card_area">
+          <ul className="card_wrapper">
+              {cardData.map((card) =><AccidentCard data={card}
+              key={card.id}/>
+              )}
 
-            </ul>
-        </div>
-  )
+          </ul>
+      </div>
+)
 }
 
 export default AccidentCardList;
-
 
 
 // const AccidentCard = ({data}) => {
