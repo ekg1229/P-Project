@@ -24,7 +24,7 @@ function EditInfo() {
 
   //이메일 받아오기
   const getData = () => {
-    axios.get("http://localhost:8080/api/auth/personelInfo")
+    axios.get("/api/auth/personelInfo")
     .then(res => {
       console.log("success");
       setEmail(res.data.email);
@@ -37,7 +37,7 @@ function EditInfo() {
   
   //개인정보 수정(이름)
   const putName = () => {
-    axios.put("http://localhost:8080/api/auth/name", {
+    axios.put("/api/auth/name", {
       name: name
     },
     {
@@ -58,7 +58,7 @@ function EditInfo() {
 
   //개인정보 수정(나이)
   const putAge = () => {
-    axios.put("http://localhost:8080/api/auth/age", {
+    axios.put("/api/auth/age", {
       age: age
     },
     {
