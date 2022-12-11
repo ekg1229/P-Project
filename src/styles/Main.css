@@ -34,7 +34,7 @@
     width:80%;
     opacity: 0.9;
     text-align: center;
-    display:table;
+    display:relative;
     margin-left:auto;
     margin-right:auto;
     border-radius: 15px;
@@ -44,7 +44,6 @@
     text-align: center;
     font-size:70px;
     color:black;
-    /* font-family:"Black Han Sans Regular"; */
     font-family:"배달의민족 주아";
 }
 
