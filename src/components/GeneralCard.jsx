@@ -1,5 +1,4 @@
 import React from 'react'
-import '../styles/GeneralCard.css';
 import Button from 'react-bootstrap/Button';
 
 const accidentInfo=[
@@ -53,9 +52,7 @@ const GeneralCard = () => {
                         <dt>{card.date}</dt>
                         <dd>{card.acdContent}</dd>
                     </dl>
-                    <div className="video_btn">
-                        <VideoBtn href={card.acdUrl} />
-                    </div>
+                  
                 </li>
             )
         })}
@@ -66,11 +63,3 @@ const GeneralCard = () => {
 }
 
 export default GeneralCard
-
-const VideoBtn=()=>{
-    return(
-      <div>
-      <Button variant="outline-dark" className="video_btn">영상보기</Button>
-    </div>)
-  }
-  
