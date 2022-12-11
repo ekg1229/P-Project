@@ -1,12 +1,15 @@
 import React from 'react';
-import Calender from './Calender';
+import Calender from '../../components/Calender';
 import Header from '../../components/Header';
 import Footer from '../../components/Footer';
 import CardList from '../../components/AccidentCardList';
 import AccidentCardList from '../../components/AccidentCardList';
+import setAuthorizationToken from '../../utils/setAuthorizationToken';
 
 //사고 조회 페이지
 function Accident() {
+  setAuthorizationToken();
+  
   return (
     <div className="wrapper">
     <Header/>
