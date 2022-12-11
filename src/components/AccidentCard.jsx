@@ -1,34 +1,36 @@
 import React from 'react'
 import '../styles/AccidentCard.css';
 import Button from 'react-bootstrap/Button';
+import gachon from '../images/gachon.png';
+import ReactPlayer from 'react-player/lazy';
+import DetailCard from './DetailCard';
 // import { useEffect, useState } from 'react';
 // import AccidentCard from './AccidentCard';
 // import axios from 'axios';
 
-
-
-const AccidentCard=({data})=> {
-
+const AccidentCard =({data})=> {
+const url='videos/video2.mp4';
 
     return (
-    <li>
+    <li className="card">
         <div className="img_set">
+        <ReactPlayer
+           width="100%"
+           height="100%"
+           className='react-player'
+           url={url}/>
         </div>
         <dl>
-            <dt>{data.date}</dt>
+            <dt >{data.date}</dt>
             <dd>{data.acdContent}</dd>
         </dl>
-        <div className="video_btn">
-            <VideoBtn href={data.acdUrl} />
-        </div>
+        <DetailCard
+        date={data.date}
+        url={url}
+        acdContent={data.acdContent}
+        />
     </li>
     )
 }
 
-const VideoBtn=()=>{
-    return(
-      <div>
-      <Button variant="outline-dark" className="video_btn">영상보기</Button>
-    </div>)
-  }
 export default AccidentCard;
