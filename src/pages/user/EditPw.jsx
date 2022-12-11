@@ -2,7 +2,7 @@ import React, {useState, useEffect} from 'react';
 import {Container, Col, Form, Button} from 'react-bootstrap';
 import axios from 'axios';
 
-//개인정보 확인 페이지
+//비밀번호 변경 페이지
 function EditPw() {
   const [password, setPassword] = useState("");
   const [newPassword, setNewPassword] = useState("");
@@ -81,6 +81,9 @@ function EditPw() {
       <link rel="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css"></link>
       <Col xs={12} className="d-flex align-items-center justify-content-center">
         <div className="bg-white shadow-soft border rounded border-light p-4 p-lg-5 w-100 fmxw-500">
+          <div className="text-center text-md-center mb-4 mt-md-0">
+            <h3 className="mb-0">비밀번호 변경 페이지</h3>
+          </div>
           <Form className="mt-4" onSubmit={(e) => {handleEditPw(e)}}>
             {/* 현재 비밀번호 관련 */}
             <Form.Group id="password1" className="mb-4">
