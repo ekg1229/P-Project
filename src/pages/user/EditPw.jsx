@@ -1,11 +1,13 @@
 import React, {useState, useEffect} from 'react';
 import {Container, Col, Form, Button} from 'react-bootstrap';
 import axios from 'axios';
+import Popup from "../../components/Popup";
 
 //비밀번호 변경 페이지
 function EditPw() {
   const [password, setPassword] = useState("");
   const [newPassword, setNewPassword] = useState("");
+  const [popup, setPopup] = useState({open: false, title: "", message: "", callback: false});
 
   const handleInputPassword = (e) => {
     setPassword(e.target.value);
@@ -24,7 +26,7 @@ function EditPw() {
     console.log(newPassword);
 
     //axios 통신
-    axios.put("http://localhost:8080/api/auth/password", {
+    axios.put("/api/auth/password", {
       password: password,
       newPassword: newPassword
     },
@@ -36,9 +38,28 @@ function EditPw() {
     })
     .then((res) => {
       console.log(res);
+      if (res.data === true) {
+        setPopup({
+          open: true,
+          title: "비밀번호 변경 성공!",
+          message: "비밀번호 변경에 성공했습니다."
+        });
+      }
+      else if(res.data === null){
+        setPopup({
+          open: true,
+          title: "비밀번호 변경 실패",
+          message: "비밀번호 변경에 실패했습니다. 비밀번호를 확인해주세요."
+        });
+      }
     })
     .catch((err) => {
       console.log(err);
+      setPopup({
+        open: true,
+        title: "비밀번호 변경 오류",
+        message: "비밀번호 변경에 실패했습니다. 다시 입력하세요."
+      });
     })
   }
 
@@ -129,6 +150,9 @@ function EditPw() {
           </Form>
         </div>
       </Col>
+      <div>
+        <Popup open = {popup.open} setPopup = {setPopup} message = {popup.message} title = {popup.title} callback = {popup.callback}/>
+      </div>
     </Container>
   );
 }
