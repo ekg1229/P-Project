@@ -5,8 +5,6 @@ import { useEffect,useState } from 'react';
 import AccidentCard from './AccidentCard';
 import axios from 'axios';
 
-
-
 const AccidentCardList = (card) => {
 
   const [cardData, setCardData]=useState([]);
@@ -16,7 +14,7 @@ const AccidentCardList = (card) => {
       axios.get(dataurl)
       .then(res=>setCardData(res.data))
   },[])
-  
+
   // card 날짜 최신순 정렬
   function date_order(a,b){
     const dateA = new Date(a['date']).getTime();
