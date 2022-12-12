@@ -1,14 +1,14 @@
-import {React, useState, useEffect} from 'react';
+import {React, useState} from 'react';
 import {Link} from 'react-router-dom';
 import axios from 'axios';
 import {Container, Col, Form, Card, Button} from 'react-bootstrap';
-import setAuthorizationToken from "../../utils/setAuthorizationToken";
-import jwt_decode from "jwt-decode";
+import Popup from "../../components/Popup";
 
 //로그인 페이지
 function SignIn() {
   const [id, setInputId] = useState("");
   const [password, setPassword] = useState("");
+  const [popup, setPopup] = useState({open: false, title: "", message: "", callback: false});
 
   const handleInputId = (e) => {
     setInputId(e.target.value);
@@ -54,6 +54,11 @@ function SignIn() {
     .catch((err) => {
       console.log("error");
       console.log(err)
+      setPopup({
+        open: true,
+        title: "로그인 오류",
+        message: "다시 입력하세요"
+      });
     })
   }
 
@@ -118,6 +123,9 @@ function SignIn() {
           </div>
         </div>
       </Col>
+      <div>
+        <Popup open = {popup.open} setPopup = {setPopup} message = {popup.message} title = {popup.title} callback = {popup.callback}/>
+      </div>
     </Container>
   );
 }
