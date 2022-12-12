@@ -1,27 +1,22 @@
-import {React, useState, useEffect} from 'react';
+import {React, useState} from 'react';
 import {Link} from 'react-router-dom';
 import axios from 'axios';
 import {Container, Col, Form, Button} from 'react-bootstrap';
 
 //비밀번호 찾기 페이지
 function ForgotInfo() {
-  const [id, setId] = useState("");
+  const [email, setEmail] = useState("");
 
   const handleId = (e) => {
-    setId(e.target.value);
+    setEmail(e.target.value);
   };
 
   const onClickForgot = (e) => {
-    // e.preventDefault(); //submit default 제출 막음
     console.log('비밀번호 찾기 페이지 클릭');
-  }
 
-  const useEffect = (() => {
-    console.log("Start ForgotPw.jsx");
-
-    axios.post('/api/auth/register', {
+    axios.put('/api/auth/unknownPassword', {
       //axios body에 보낼 데이터
-      id: id,
+      email: email,
     },
     {
       //axios header
@@ -41,7 +36,7 @@ function ForgotInfo() {
     .catch((err) => {
       console.log(err)
     })
-  }, []);
+  }
 
   return (
     <Container>
@@ -67,7 +62,7 @@ function ForgotInfo() {
             </Form.Group>
             
             {/* 비밀번호 찾기 관련 */}
-            <Button variant="primary" type="submit" className="w-100" onClick={onClickForgot}>
+            <Button variant="primary" className="w-100" onClick={onClickForgot}>
               비밀번호 찾기
             </Button>
           </Form>
