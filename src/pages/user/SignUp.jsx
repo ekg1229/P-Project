@@ -2,6 +2,7 @@ import {React, useState} from 'react';
 import {Link} from 'react-router-dom';
 import axios from 'axios';
 import {Container, Col, Form, Button} from 'react-bootstrap';
+import Popup from "../../components/Popup";
 
 //회원가입 페이지
 function SignUp() {
@@ -9,6 +10,7 @@ function SignUp() {
   const [password, setInputPassword] = useState("");
   const [name, setInputName] = useState("");
   const [age, setInputAge] = useState("");
+  const [popup, setPopup] = useState({open: false, title: "", message: "", callback: false});
 
   const handleInputId = (e) => {
     setInputId(e.target.value);
@@ -48,11 +50,24 @@ function SignUp() {
     .then((res) => {
       console.log("success");
       console.log(res)
-      window.location.href="/signin" //로그인 페이지로 이동
+      if(res.status === 200){
+        setPopup({
+          open: true,
+          title: "회원가입 성공!",
+          message: "회원가입에 성공했습니다."
+        })
+        //go to signin page
+        window.location.href="/signin"
+      }
     })
     .catch((err) => {
       console.log("error");
       console.log(err)
+      setPopup({
+        open: true,
+        title: "회원가입 오류",
+        message: "이메일 혹은 비밀번호가 잘못되었습니다. 다시 입력하세요."
+      });
     })
   }
 
@@ -166,6 +181,9 @@ function SignUp() {
           </div>
         </div>
       </Col>
+      <div>
+        <Popup open = {popup.open} setPopup = {setPopup} message = {popup.message} title = {popup.title} callback = {popup.callback}/>
+      </div>
     </Container>
   );
 }
