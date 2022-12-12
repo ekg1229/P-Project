@@ -2,39 +2,52 @@ import {React, useState} from 'react';
 import {Link} from 'react-router-dom';
 import axios from 'axios';
 import {Container, Col, Form, Button} from 'react-bootstrap';
+import Popup from "../../components/Popup";
 
 //비밀번호 찾기 페이지
 function ForgotInfo() {
   const [email, setEmail] = useState("");
+  const [popup, setPopup] = useState({open: false, title: "", message: "", callback: false});
 
   const handleId = (e) => {
     setEmail(e.target.value);
   };
 
-  const onClickForgot = (e) => {
-    console.log('비밀번호 찾기 페이지 클릭');
-
+  const onClickForgot = () => {
     axios.put('/api/auth/unknownPassword', {
-      //axios body에 보낼 데이터
       email: email,
     },
     {
-      //axios header
       headers:{
         'Content-Type': 'application/json',
-        //'Authorization' : `Bearer ${accessToken}`
       }
     })
     .then((res) => {
-      console.log(res)
-      if(res.state==='true'){
-        console.log("response success")
+      console.log(res);
+      if(res.status === 200){
+        setPopup({
+          open: true,
+          title: "비밀번호 찾기 성공!",
+          message: "비밀번호가 변경되었습니다. 이메일을 확인해주세요."
+        })
         //go to signin page
         window.location.href="/signin"
       }
+      else{
+        setPopup({
+          open: true,
+          title: "비밀번호 찾기 오류",
+          message: "이메일을 확인해주세요."
+        })
+      }
     })
     .catch((err) => {
-      console.log(err)
+      console.log(err);
+      setPopup({
+        open: true,
+        title: "비밀번호 찾기 오류",
+        message: "서버에 문제가 있습니다. 다시 시도해주세요."
+      });
     })
   }
 
@@ -83,6 +96,9 @@ function ForgotInfo() {
           </div>
         </div>
       </Col>
+      <div>
+        <Popup open = {popup.open} setPopup = {setPopup} message = {popup.message} title = {popup.title} callback = {popup.callback}/>
+      </div>
     </Container>
   );
 }
