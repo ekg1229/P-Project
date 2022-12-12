@@ -1,21 +1,18 @@
 import React, {useState, useEffect} from "react";
 import {Container, Col, Form, Button} from 'react-bootstrap';
 import axios from 'axios';
+import "../../styles/user/EditImei.css"
+import trash from "../../images/trash.png"
+import Popup from "../../components/Popup";
 
 //Serial 추가/삭제 페이지
 function EditImei() {
+  const [data, setData] = useState([]);
   const [imei, setImei] = useState("");
-  const [imei_all, setImeiAll] = useState([
-    {id: 1, value: "7f409b1b3211c37499"},
-  ]);
+  const [popup, setPopup] = useState({open: false, title: "", message: "", callback: false});
 
   const handleImei = (e) => {
     setImei(e.target.value);
-  };
-
-  const handleImeiAll = (e) => {
-    setImeiAll(imei_all => [...imei_all, imei]);
-    setImei('');
   };
 
   const addImei = () => {
@@ -31,16 +28,30 @@ function EditImei() {
     .then((res) => {
       console.log("success");
       console.log(res);
-      setImeiAll((prevItem)=>{
-        return[
-          {
-            id: imei_all.length + 1,
-            value: imei,
-          },
-          ...prevItem,
-        ]
-      })
-      // setImei("");
+      if(res.data == null){
+        setPopup({
+          open: true,
+          title: "Serial 중복 오류",
+          message: "Serial 번호가 중복됩니다. 다시 입력하세요."
+        });
+      }
+      else if(res.data == true){
+        setData((prevItem)=>{
+          return[
+            {
+              user_id: data.length + 1,
+              imei: data,
+            },
+            ...prevItem,
+          ]
+        });
+
+        setPopup({
+          open: true,
+          title: "Serial 추가 성공!",
+          message: "Serial 번호가 추가되었습니다."
+        });
+      }
     })
     .catch((err) => {
       console.log("error");
@@ -58,7 +69,7 @@ function EditImei() {
     .then((res) => {
       console.log("success");
       console.log(res);
-      console.log("res.data"+res.data);
+      setData(res.data);
     })
     .catch((err) => {
       console.log("error");
@@ -66,7 +77,7 @@ function EditImei() {
     })
   }
 
-  const deleteImei = (value) => {
+  const deleteImei = (imei) => {
     axios.delete('http://localhost:8080/api/blockchain/imei', {
       imei: imei
     },
@@ -79,18 +90,21 @@ function EditImei() {
     .then((res) => {
       console.log("success");
       console.log(res);
-      setImeiAll((imei_all)=>imei_all.filter((imei_all)=>imei_all.value != value));
-      console.log(imei_all);
+      setData((data) => data.filter((data) => data.imei != imei));
+      console.log(data);
     })
     .catch((err) => {
       console.log("error");
       console.log(err);
-      setImeiAll((imei_all)=>imei_all.filter((imei_all)=>imei_all.value != value));
-      console.log(imei_all);
+      console.log(data);
+      console.log(imei);
+      console.log(data.imei);
     })
   }
 
-  useEffect(()=>{
+  useEffect(() => {
+    getImei();
+
     return () => {
       console.log("Serial 추가/삭제 페이지 종료");
     }
@@ -122,22 +136,22 @@ function EditImei() {
             </Form.Group>
 
             {/* Serial 추가/삭제 버튼 관련 */}
-            <Button variant="primary" type="submit" className="w-50" id='confirm2' onClick={addImei}>
+            <Button variant="primary" type="submit" className="w-100" id='confirm2' onClick={addImei}>
               Serial 추가
-            </Button>
-            <Button variant="primary" type="submit" className="w-50" id='confirm2' onClick={()=>deleteImei(imei)}>
-              Serial 삭제
             </Button>
           </Form>
           {/* Serial Card */}
-          imei: {imei}
           <div id="element-list">
             <ul id="list">
-              {imei_all.map((item)=>{return <li key={item.id}>{item.value}</li>;})}
+            {data.map((item) => {return <li key={item.user_id}>Serial-{item.user_id}: {item.imei}
+              <img src={trash} onClick={() => deleteImei(item.imei)} alt="trash"></img></li>})}
             </ul>
           </div>
         </div>
       </Col>
+      <div>
+        <Popup open = {popup.open} setPopup = {setPopup} message = {popup.message} title = {popup.title} callback = {popup.callback}/>
+      </div>
     </Container>
   )
 }
