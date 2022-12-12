@@ -1,0 +1,14 @@
+.main_page_wrapper{
+  margin-top:30px;
+  margin-bottom: 30px;
+  border: 1px solid #282c34;
+  padding: 30px;
+  background-color:#282c34;
+  width:80%;
+  opacity: 0.9;
+  text-align: center;
+  display:table;
+  margin-left:auto;
+  margin-right:auto;
+  border-radius: 15px;
+}
