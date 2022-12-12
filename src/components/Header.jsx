@@ -22,7 +22,6 @@ function Header() {
       <Nav>
         <Nav.Link href="userinfo">내 정보</Nav.Link>
         <Nav.Link href="signin" onClick={logout}>로그아웃</Nav.Link> 
-        <Nav.Link href="signup">회원가입</Nav.Link>
       </Nav>
     </Navbar.Collapse>
   </Navbar>
