@@ -1,8 +1,8 @@
 import React, {useEffect} from 'react';
 import { useNavigate } from 'react-router-dom';
-import "../../styles/error/Page500.css";
+import "../../styles/error/Page400.css";
 
-function Page500() {
+function Page400() {
   const navigate = useNavigate();
   
   const timeout = () => {
@@ -24,9 +24,9 @@ function Page500() {
       <div class="error-header"></div>
       <div class="container">
           <section class="error-container text-center">
-              <h1>500</h1>
+              <h1>400</h1>
               <div class="error-divider">
-                  <h2>서버 에러</h2>
+                  <h2>토큰 에러</h2>
                   <p class="description">10초 후에 메인 페이지로 이동됩니다.</p>
               </div>
               <a href="/main" class="return-btn"><i class="fa fa-home"></i>Home</a>
@@ -36,4 +36,4 @@ function Page500() {
   );
 }
 
-export default Page500;
+export default Page400;

@@ -31,9 +31,9 @@ export default function setAuthorizationToken(){
   .catch((err) => {
     console.log("error");
     console.log(err);
-    if (err.response.status === 400){
+    if (err.response.status === 404){
       logout();
-      window.location.href = "/page400";
+      window.location.href = "/page404";
     }
     else if (err.response.status === 419){
       logout();

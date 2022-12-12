@@ -1,6 +1,7 @@
 import React, {useState, useEffect} from 'react';
 import {Container, Col, Form, Button} from 'react-bootstrap';
 import axios from 'axios';
+import Popup from "../../components/Popup";
 
 //개인정보 수정 페이지
 function EditInfo() {
@@ -8,6 +9,7 @@ function EditInfo() {
   const [email, setEmail] = useState("");
   const [name, setName] = useState("");
   const [age, setAge] = useState("");
+  const [popup, setPopup] = useState({open: false, title: "", message: "", callback: false});
 
   const handleInputName = (e) => {
     setName(e.target.value);
@@ -22,7 +24,7 @@ function EditInfo() {
     putAge();
   }
 
-  //이메일 받아오기
+  //개인정보 받아오기
   const getData = () => {
     axios.get("/api/auth/personelInfo")
     .then(res => {
@@ -32,6 +34,11 @@ function EditInfo() {
     .catch(res => {
       console.log("error");
       console.log(res);
+      setPopup({
+        open: true,
+        title: "개인정보 확인 오류",
+        message: "개인정보를 읽을 수 없습니다."
+      });
     })
   }
   
@@ -53,6 +60,11 @@ function EditInfo() {
     .catch(res => {
       console.log("error");
       console.log(res);
+      setPopup({
+        open: true,
+        title: "이름 수정 오류",
+        message: "이름을 수정할 수 없습니다."
+      });
     })
   }
 
@@ -74,6 +86,11 @@ function EditInfo() {
     .catch(res => {
       console.log("error");
       console.log(res);
+      setPopup({
+        open: true,
+        title: "나이 수정 오류",
+        message: "나이를 수정할 수 없습니다."
+      });
     })
   }
 
@@ -126,6 +143,9 @@ function EditInfo() {
           </Form>
         </div>
       </Col>
+      <div>
+        <Popup open = {popup.open} setPopup = {setPopup} message = {popup.message} title = {popup.title} callback = {popup.callback}/>
+      </div>
     </Container>
   );
 }

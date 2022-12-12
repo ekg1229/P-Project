@@ -1,6 +1,7 @@
 import React, {useState, useEffect} from 'react';
 import {Container, Col, Form, Button} from 'react-bootstrap';
 import axios from 'axios';
+import Popup from "../../components/Popup";
 
 //개인정보 확인 페이지
 function EditInfo() {
@@ -8,6 +9,7 @@ function EditInfo() {
   const [email, setEmail] = useState("");
   const [name, setName] = useState("");
   const [age, setAge] = useState("");
+  const [popup, setPopup] = useState({open: false, title: "", message: "", callback: false});
 
   //개인정보 확인
   const getData = () => {
@@ -21,6 +23,11 @@ function EditInfo() {
     .catch(res => {
       console.log("error");
       console.log(res);
+      setPopup({
+        open: true,
+        title: "개인정보 확인 오류",
+        message: "서버에 문제가 있습니다. 다시 시도해주세요."
+      });
     })
   }
 
@@ -78,6 +85,9 @@ function EditInfo() {
           </Form>
         </div>
       </Col>
+      <div>
+        <Popup open = {popup.open} setPopup = {setPopup} message = {popup.message} title = {popup.title} callback = {popup.callback}/>
+      </div>
     </Container>
   );
 }

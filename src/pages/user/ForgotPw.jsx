@@ -1,47 +1,55 @@
-import {React, useState, useEffect} from 'react';
+import {React, useState} from 'react';
 import {Link} from 'react-router-dom';
 import axios from 'axios';
 import {Container, Col, Form, Button} from 'react-bootstrap';
+import Popup from "../../components/Popup";
 
 //비밀번호 찾기 페이지
 function ForgotInfo() {
-  const [id, setId] = useState("");
+  const [email, setEmail] = useState("");
+  const [popup, setPopup] = useState({open: false, title: "", message: "", callback: false});
 
   const handleId = (e) => {
-    setId(e.target.value);
+    setEmail(e.target.value);
   };
 
-  const onClickForgot = (e) => {
-    // e.preventDefault(); //submit default 제출 막음
-    console.log('비밀번호 찾기 페이지 클릭');
-  }
-
-  const useEffect = (() => {
-    console.log("Start ForgotPw.jsx");
-
-    axios.post('/api/auth/register', {
-      //axios body에 보낼 데이터
-      id: id,
+  const onClickForgot = () => {
+    axios.put('/api/auth/unknownPassword', {
+      email: email,
     },
     {
-      //axios header
       headers:{
         'Content-Type': 'application/json',
-        //'Authorization' : `Bearer ${accessToken}`
       }
     })
     .then((res) => {
-      console.log(res)
-      if(res.state==='true'){
-        console.log("response success")
+      console.log(res);
+      if(res.status === 200){
+        setPopup({
+          open: true,
+          title: "비밀번호 찾기 성공!",
+          message: "비밀번호가 변경되었습니다. 이메일을 확인해주세요."
+        })
         //go to signin page
         window.location.href="/signin"
       }
+      else{
+        setPopup({
+          open: true,
+          title: "비밀번호 찾기 오류",
+          message: "이메일을 확인해주세요."
+        })
+      }
     })
     .catch((err) => {
-      console.log(err)
+      console.log(err);
+      setPopup({
+        open: true,
+        title: "비밀번호 찾기 오류",
+        message: "서버에 문제가 있습니다. 다시 시도해주세요."
+      });
     })
-  }, []);
+  }
 
   return (
     <Container>
@@ -67,7 +75,7 @@ function ForgotInfo() {
             </Form.Group>
             
             {/* 비밀번호 찾기 관련 */}
-            <Button variant="primary" type="submit" className="w-100" onClick={onClickForgot}>
+            <Button variant="primary" className="w-100" onClick={onClickForgot}>
               비밀번호 찾기
             </Button>
           </Form>
@@ -88,6 +96,9 @@ function ForgotInfo() {
           </div>
         </div>
       </Col>
+      <div>
+        <Popup open = {popup.open} setPopup = {setPopup} message = {popup.message} title = {popup.title} callback = {popup.callback}/>
+      </div>
     </Container>
   );
 }

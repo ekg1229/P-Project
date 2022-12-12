@@ -1,0 +1,28 @@
+ul{
+  padding: 1rem;
+}
+
+.element-list{
+  height: 550px;
+  overflow-y: scroll;
+}
+
+li{
+  list-style: none;
+  padding: 10px 5px;
+  background-color: #fff;
+  margin: 12px 0;
+  /* box-shadow: 0 0px 5px rgba(0, 0, 0, 16); */
+  border: 1px solid black;
+  border-radius: 7px;
+  transition: .4s;
+}
+
+li:hover{
+  background-color: #e0e0e0;
+}
+
+img{
+  margin-left: 30px;
+  width: 1rem;
+}
