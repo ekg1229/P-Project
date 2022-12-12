@@ -19,6 +19,7 @@ import General from './pages/func/General'; //일반 조회 페이지
 import Accident from './pages/func/Accident'; //사고 조회 페이지
 
 //import error pages
+import Page400 from './pages/error/Page400'; //400 페이지
 import Page404 from './pages/error/Page404'; //404 페이지
 import Page419 from './pages/error/Page419'; //419 페이지
 import Page500 from './pages/error/Page500'; //500 페이지
@@ -41,6 +42,7 @@ root.render(
       <Route path="general" element={<General/>}/>
       <Route path="accident" element={<Accident/>}/>
 
+      <Route path="page400" element={<Page400/>}/>
       <Route path="page404" element={<Page404/>}/>
       <Route path="page419" element={<Page419/>}/>
       <Route path="page500" element={<Page500/>}/>
