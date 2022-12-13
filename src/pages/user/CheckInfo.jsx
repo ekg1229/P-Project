@@ -49,31 +49,31 @@ function EditInfo() {
     <Container>
       <link rel="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css"></link>
       <Col xs={12} className="d-flex align-items-center justify-content-center">
-        <div className="bg-white shadow-soft border rounded border-light p-4 p-lg-5 w-100 fmxw-500">
+        <div className="shadow-soft border rounded border-light p-4 p-lg-5 w-100 fmxw-500" style={{opacity: 0.9, border: "1px solid #282c34", background: "#282c34"}}>
           <div className="text-center text-md-center mb-4 mt-md-0">
-            <h3 className="mb-0">개인정보 확인 페이지</h3>
+            <h3 className="mb-0" style={{color: "white"}}>개인정보 확인 페이지</h3>
           </div>
           <Form className="mt-4">
             {/* 아이디(이메일) 관련 */}
             <Form.Group id="email" className="mb-4">
-              <Form.Label>이메일</Form.Label>
-              <div className="form-floating mb-3">
+              <Form.Label style={{color: "white"}}>이메일</Form.Label>
+              <div className="form-floating mb-3" style={{color: "white"}}>
                 {email}
               </div>
             </Form.Group>
 
             {/* 이름 관련 */}
             <Form.Group id="name" className="mb-4">
-              <Form.Label>이름</Form.Label>
-              <div className="form-floating">
+              <Form.Label style={{color: "white"}}>이름</Form.Label>
+              <div className="form-floating" style={{color: "white"}}>
                 {name}
               </div>
             </Form.Group>
 
             {/* 나이 관련 */}
             <Form.Group id="age" className="mb-4">
-              <Form.Label>나이</Form.Label>
-              <div className="form-floating">
+              <Form.Label style={{color: "white"}}>나이</Form.Label>
+              <div className="form-floating" style={{color: "white"}}>
                 {age}
               </div>
             </Form.Group>

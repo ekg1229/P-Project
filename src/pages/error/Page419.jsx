@@ -24,12 +24,12 @@ function Page419() {
       <div class="error-header"></div>
       <div class="container">
           <section class="error-container text-center">
-              <h1>419</h1>
+              <h1>인증 만료</h1>
               <div class="error-divider">
-                  <h2><b>인증 만료</b></h2>
-                  <p class="description">10초 후에 메인 페이지로 이동됩니다.</p>
+                  <h2><b>10초 후에 메인 페이지로 이동됩니다.</b></h2>
+                  {/* <p class="description">10초 후에 메인 페이지로 이동됩니다.</p> */}
               </div>
-              <a href="/main" class="return-btn"><i class="fa fa-home"></i>Home</a>
+              <a href="/main" class="return-btn" style={{fontSize: "2rem"}}><i class="fa fa-home fa-2x"></i>Home</a>
           </section>
       </div>
     </>

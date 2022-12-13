@@ -2,7 +2,7 @@ import React, {useEffect} from 'react';
 import { useNavigate } from 'react-router-dom';
 import "../../styles/error/Page400.css";
 
-function Page400() {
+function NoMatch() {
   const navigate = useNavigate();
   
   const timeout = () => {
@@ -24,7 +24,7 @@ function Page400() {
       <div class="error-header"></div>
       <div class="container">
           <section class="error-container text-center">
-              <h1>토큰 에러</h1>
+              <h1>잘못된 접근</h1>
               <div class="error-divider">
                   <h2>10초 후에 메인 페이지로 이동됩니다.</h2>
                   {/* <p class="description">10초 후에 메인 페이지로 이동됩니다.</p> */}
@@ -36,4 +36,4 @@ function Page400() {
   );
 }
 
-export default Page400;
+export default NoMatch;

@@ -39,8 +39,8 @@ function EditImei() {
         setData((prevItem)=>{
           return[
             {
-              user_id: data.length + 1,
-              imei: data,
+              user_id: 1,
+              imei: imei,
             },
             ...prevItem,
           ]
@@ -78,27 +78,30 @@ function EditImei() {
   }
 
   const deleteImei = (imei) => {
-    axios.delete('http://localhost:8080/api/blockchain/imei', {
-      imei: imei
-    },
-    {
+    axios.delete('/api/blockchain/imei', {
       headers:{
         withCredentials: true,
         'Content-Type': 'application/json',
+      },
+      data:{
+        imei: imei
       }
     })
     .then((res) => {
       console.log("success");
       console.log(res);
       setData((data) => data.filter((data) => data.imei != imei));
-      console.log(data);
+      if(res.data == true){
+        setPopup({
+          open: true,
+          title: "Serial 삭제 성공!",
+          message: "Serial 삭제에 성공했습니다."
+        });
+      }
     })
     .catch((err) => {
       console.log("error");
       console.log(err);
-      console.log(data);
-      console.log(imei);
-      console.log(data.imei);
     })
   }
 
@@ -114,14 +117,14 @@ function EditImei() {
     <Container>
       <link rel="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css"></link>
       <Col xs={12} className="d-flex align-items-center justify-content-center">
-        <div className="bg-white shadow-soft border rounded border-light p-4 p-lg-5 w-100 fmxw-500">
+        <div className="shadow-soft border rounded border-light p-4 p-lg-5 w-100 fmxw-500" style={{opacity: 0.9, border: "1px solid #282c34", background: "#282c34"}}>
           <div className="text-center text-md-center mb-4 mt-md-0">
-            <h3 className="mb-0">Serial 추가/삭제 페이지</h3>
+            <h3 className="mb-0" style={{color: "white"}}>Serial 추가/삭제 페이지</h3>
           </div>
           <Form className="mt-4">
             {/* Serial 추가/삭제 관련 */}
             <Form.Group id="confirmimei" className="mb-4">
-              <Form.Label>Serial 추가/삭제</Form.Label>
+              <Form.Label style={{color: "white"}}>Serial 추가/삭제</Form.Label>
               <div class="form-floating">
                 <input type="text" class="form-control was-validate" id="imei" placeholder="Password" name="imei" pattern="[0-9a-zA-Z]{10}" title="Serial은 숫자, 영문 대소문자로 이루어집니다." onChange={handleImei} readOnly={false}/>
                 <label for="floatingPassword" style={{color: "#BDBDBD"}}>Serial Number를 입력해주세요</label>
@@ -143,7 +146,7 @@ function EditImei() {
           {/* Serial Card */}
           <div id="element-list">
             <ul id="list">
-            {data.map((item) => {return <li key={item.user_id}>Serial-{item.user_id}: {item.imei}
+            {data.map((item) => {return <li key={item.user_id}>Serial: {item.imei}
               <img src={trash} onClick={() => deleteImei(item.imei)} alt="trash"></img></li>})}
             </ul>
           </div>
