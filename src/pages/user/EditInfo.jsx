@@ -107,20 +107,20 @@ function EditInfo() {
       <Col xs={12} className="d-flex align-items-center justify-content-center">
         <div className="shadow-soft border rounded border-light p-4 p-lg-5 w-100 fmxw-500" style={{opacity: 0.9, border: "1px solid #282c34", background: "#282c34"}}>
           <div className="text-center text-md-center mb-4 mt-md-0">
-            <h3 className="mb-0" style={{color: "white"}}>개인정보 수정 페이지</h3>
+            <h2 className="mb-0" style={{color: "white"}}>개인정보 수정</h2>
           </div>
           <Form className="mt-4" onSubmit={(e) => {handleSubmit(e)}}>
             {/* 아이디(이메일) 관련 */}
             <Form.Group id="email" className="mb-4">
-              <Form.Label style={{color: "white"}}>이메일</Form.Label>
-              <div className="form-floating mb-3" style={{color: "white"}}>
+              <Form.Label style={{color: "white", fontSize: "1.2rem"}}>이메일</Form.Label>
+              <div className="form-floating mb-3" style={{color: "white", fontSize: "1.2rem"}}>
                 {email}
               </div>
             </Form.Group>
 
             {/* 이름 관련 */}
             <Form.Group id="Name" className="mb-4">
-              <Form.Label style={{color: "white"}}>이름</Form.Label>
+              <Form.Label style={{color: "white", fontSize: "1.2rem"}}>이름</Form.Label>
               <div class="form-floating">
                 <input type="text" class="form-control was-validate" id="floatingPassword" placeholder="Password" name="name" required maxlength="8" pattern="[ㄱ-힣]{1,8}" title="최대 8자까지의 한글만 입력가능합니다." onChange={handleInputName}/>
                 <label for="floatingInput" style={{color: "#BDBDBD"}}>이름을 입력해주세요</label>
@@ -129,7 +129,7 @@ function EditInfo() {
 
             {/* 나이 관련 */}
             <Form.Group id="Age" className="mb-4">
-              <Form.Label style={{color: "white"}}>나이</Form.Label>
+              <Form.Label style={{color: "white", fontSize: "1.2rem"}}>나이</Form.Label>
               <div class="form-floating">
                 <input type="text" class="form-control was-validate" id="floatingPassword" placeholder="Password" name="age" required maxlength="3" pattern="[0-9]{,3}" title="나이는 숫자로 입력하세요." onChange={handleInputAge}/>
                 <label for="floatingPassword" style={{color: "#BDBDBD"}}>나이를 입력해주세요</label>
@@ -137,7 +137,7 @@ function EditInfo() {
             </Form.Group>
 
             {/* 개인정보 수정 관련 */}
-            <Button variant="primary" type="submit" className="w-100" onClick={handleSubmit}>
+            <Button variant="primary" type="submit" className="w-100" onClick={handleSubmit} style={{fontSize: "1.2rem"}}>
               개인정보 수정
             </Button>
           </Form>
