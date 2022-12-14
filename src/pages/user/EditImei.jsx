@@ -7,8 +7,8 @@ import Popup from "../../components/Popup";
 
 //Serial 추가/삭제 페이지
 function EditImei() {
-  const [data, setData] = useState([]);
   const [imei, setImei] = useState("");
+  const [data, setData] = useState([]);
   const [popup, setPopup] = useState({open: false, title: "", message: "", callback: false});
 
   const handleImei = (e) => {
@@ -45,7 +45,6 @@ function EditImei() {
             ...prevItem,
           ]
         });
-
         setPopup({
           open: true,
           title: "Serial 추가 성공!",
@@ -119,12 +118,12 @@ function EditImei() {
       <Col xs={12} className="d-flex align-items-center justify-content-center">
         <div className="shadow-soft border rounded border-light p-4 p-lg-5 w-100 fmxw-500" style={{opacity: 0.9, border: "1px solid #282c34", background: "#282c34"}}>
           <div className="text-center text-md-center mb-4 mt-md-0">
-            <h3 className="mb-0" style={{color: "white"}}>Serial 추가/삭제 페이지</h3>
+            <h2 className="mb-0" style={{color: "white"}}>S/N 추가</h2>
           </div>
           <Form className="mt-4">
             {/* Serial 추가/삭제 관련 */}
             <Form.Group id="confirmimei" className="mb-4">
-              <Form.Label style={{color: "white"}}>Serial 추가/삭제</Form.Label>
+              <Form.Label style={{color: "white", fontSize: "1.2rem"}}>Serial 추가</Form.Label>
               <div class="form-floating">
                 <input type="text" class="form-control was-validate" id="imei" placeholder="Password" name="imei" pattern="[0-9a-zA-Z]{10}" title="Serial은 숫자, 영문 대소문자로 이루어집니다." onChange={handleImei} readOnly={false}/>
                 <label for="floatingPassword" style={{color: "#BDBDBD"}}>Serial Number를 입력해주세요</label>
@@ -139,15 +138,21 @@ function EditImei() {
             </Form.Group>
 
             {/* Serial 추가/삭제 버튼 관련 */}
-            <Button variant="primary" type="submit" className="w-100" id='confirm2' onClick={addImei}>
+            <Button variant="primary" type="submit" className="w-100" id='confirm2' onClick={addImei} style={{fontSize: "1.2rem"}}>
               Serial 추가
             </Button>
           </Form>
-          {/* Serial Card */}
+
+          <hr color="white" size="5"/>
+
+          {/* Serial List */}
+          <div className="text-center text-md-center mb-4 mt-md-0">
+            <h2 className="mb-0" style={{color: "white", marginTop: "1.5rem"}}>S/N 리스트</h2>
+          </div>
           <div id="element-list">
-            <ul id="list">
-            {data.map((item) => {return <li key={item.user_id}>Serial: {item.imei}
-              <img src={trash} onClick={() => deleteImei(item.imei)} alt="trash"></img></li>})}
+            <ul id="list" style={{fontSize: "1.3rem", fontWeight: "bold"}}>
+            {data.map((item) => {return <li key={item.user_id}>{item.imei}
+              <img className="img_trash" src={trash} onClick={() => deleteImei(item.imei)} alt="trash"></img></li>})}
             </ul>
           </div>
         </div>
