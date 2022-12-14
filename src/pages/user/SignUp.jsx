@@ -98,11 +98,14 @@ function SignUp() {
   return (
     <div className="wrapper">
       <section className="main_visual">
+        <div className="text-center text-md-center mb-4 mt-md-0">
+          <h1 className="mb-0" style={{color: "white", marginTop: "1.2rem"}}> 블록체인 블랙박스</h1>
+        </div>
         <Container>
           <Col xs={12} className="d-flex align-items-center justify-content-center">
             <div className="mb-4 mb-lg-0 shadow-soft border rounded border-light p-4 p-lg-5 w-100 fmxw-500" style={{opacity: 0.9, border: "1px solid #282c34", background: "#282c34"}}>
               <div className="text-center text-md-center mb-4 mt-md-0">
-                <h3 className="mb-0" style={{color: "white"}}>회원가입 페이지</h3>
+                <h3 className="mb-0" style={{color: "white"}}>회원가입</h3>
               </div>
               <Form className="mt-4" onSubmit={(e) => {handleSubmit(e)}}>
                 {/* 이메일 관련 */}
