@@ -37,7 +37,7 @@ function ForgotInfo() {
         setPopup({
           open: true,
           title: "비밀번호 찾기 오류",
-          message: "이메일을 확인해주세요."
+          message: "이메일을 전송에 실패했습니다. 다시 시도해주세요."
         })
       }
     })
@@ -46,7 +46,7 @@ function ForgotInfo() {
       setPopup({
         open: true,
         title: "비밀번호 찾기 오류",
-        message: "서버에 문제가 있습니다. 다시 시도해주세요."
+        message: "메일 보내기에 실패했거나, 서버에 문제가 있습니다."
       });
     })
   }
@@ -54,6 +54,9 @@ function ForgotInfo() {
   return (
     <div className="wrapper">
       <section className="main_visual">
+        <div className="text-center text-md-center mb-4 mt-md-0">
+          <h1 className="mb-0" style={{color: "white", marginTop: "1.2rem"}}> 블록체인 블랙박스</h1>
+        </div>
         <Container>
           <Col xs={12} className="d-flex align-items-center justify-content-center">
             <div className="shadow-soft border rounded border-light p-4 p-lg-5 w-100 fmxw-500" style={{opacity: 0.9, border: "1px solid #282c34", background: "#282c34"}}>
