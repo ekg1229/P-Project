@@ -16,18 +16,18 @@ function UserInfo() {
       <Header/>
       <section className="main_visual">
         <Container>
-          <Nav className="mt-5 mb-3 justify-content-center" fill variant="tabs" defaultActiveKey="link-0">
+          <Nav style={{fontSize: "1.3rem"}} className="mt-5 justify-content-center" fill variant="tabs" defaultActiveKey="link-0">
             <Nav.Item>
-              <Nav.Link eventKey="link-0" onClick={()=>{setTab("0")}}>개인정보 확인</Nav.Link>
+              <Nav.Link style={{fontWeight: "bold", color: "#22A39F"}} eventKey="link-0" onClick={()=>{setTab("0")}}>개인정보 확인</Nav.Link>
             </Nav.Item>
             <Nav.Item>
-              <Nav.Link eventKey="link-1" onClick={()=>{setTab("1")}}>개인정보 수정</Nav.Link>
+              <Nav.Link style={{fontWeight: "bold", color: "#22A39F"}} eventKey="link-1" onClick={()=>{setTab("1")}}>개인정보 수정</Nav.Link>
             </Nav.Item>
             <Nav.Item>
-              <Nav.Link eventKey="link-2" onClick={()=>{setTab("2")}}>비밀번호 변경</Nav.Link>
+              <Nav.Link style={{fontWeight: "bold", color: "#22A39F"}} eventKey="link-2" onClick={()=>{setTab("2")}}>비밀번호 변경</Nav.Link>
             </Nav.Item>
             <Nav.Item>
-              <Nav.Link eventKey="link-3" onClick={()=>{setTab("3")}}>Serial 추가/삭제</Nav.Link>
+              <Nav.Link style={{fontWeight: "bold", color: "#22A39F"}} eventKey="link-3" onClick={()=>{setTab("3")}}>Serial 추가/삭제</Nav.Link>
             </Nav.Item>
           </Nav>
         </Container>
