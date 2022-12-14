@@ -65,12 +65,15 @@ function SignIn() {
   return (
     <div className="wrapper">
       <section className="main_visual">
+        <div className="text-center text-md-center mb-4 mt-md-0">
+          <h1 className="mb-0" style={{color: "white", marginTop: "1.2rem"}}> 블록체인 블랙박스</h1>
+        </div>
         <Container>
           <link rel="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css"></link>
           <Col xs={12} className="d-flex align-items-center justify-content-center">
             <div className="shadow-soft border rounded border-light p-4 p-lg-5 w-100 fmxw-500" style={{opacity: 0.9, border: "1px solid #282c34", background: "#282c34"}}>
               <div className="text-center text-md-center mb-4 mt-md-0">
-                <h2 className="mb-0" style={{color: "white"}}>로그인 페이지</h2>
+                <h2 className="mb-0" style={{color: "white"}}>로그인</h2>
               </div>
               <Form className="mt-4">
                 {/* 아이디 관련 */}
@@ -92,7 +95,7 @@ function SignIn() {
                 <Form.Group>
                   <Form.Group id="password" className="mb-4">
                     <Form.Label style={{color: "white"}}>비밀번호</Form.Label>
-                    <Card.Link href='/forgotpw' className="small text-end" style={{textAlign:"center", float:"right"}}>비밀번호를 잊으셨나요?</Card.Link>
+                    <Card.Link href='/forgotpw' className="small text-end" style={{textAlign:"center", float:"right", fontWeight: "bold", fontSize: "1.2rem"}}>비밀번호를 잊으셨나요?</Card.Link>
                     <div className="form-floating">
                       <input type="password" className="form-control was-validate" id="password" placeholder="Password" name="pwd" required maxLength="32" pattern="[0-9a-zA-Z]{8,}$" title="비밀번호는 8자 이상의 영문 대소문자와 숫자로 이루어질 수 있습니다." onChange={handleInputPassword}/>
                       <label htmlFor="floatingPassword" style={{color: "#BDBDBD"}}>비밀번호를 입력하세요</label>
@@ -116,9 +119,9 @@ function SignIn() {
               </Form>
 
               <div className="d-flex justify-content-center align-items-center mt-4">
-                <span className="fw-normal" style={{color: "white"}}>
+                <span className="fw-normal" style={{color: "white", fontSize: "1.2rem"}}>
                   회원이 아니신가요? &nbsp;
-                  <Link to="/signup" className="fw-bold">
+                  <Link to="/signup" className="fw-bold" style={{fontSize: "1.2rem"}}>
                     {`회원가입`}
                   </Link>
                 </span>
