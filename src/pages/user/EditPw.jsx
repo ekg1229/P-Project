@@ -103,12 +103,12 @@ function EditPw() {
       <Col xs={12} className="d-flex align-items-center justify-content-center">
         <div className="shadow-soft border rounded border-light p-4 p-lg-5 w-100 fmxw-500" style={{opacity: 0.9, border: "1px solid #282c34", background: "#282c34"}}>
           <div className="text-center text-md-center mb-4 mt-md-0">
-            <h3 className="mb-0" style={{color: "white"}}>비밀번호 변경 페이지</h3>
+            <h2 className="mb-0" style={{color: "white"}}>비밀번호 변경</h2>
           </div>
           <Form className="mt-4" onSubmit={(e) => {handleEditPw(e)}}>
             {/* 현재 비밀번호 관련 */}
             <Form.Group id="password1" className="mb-4">
-              <Form.Label style={{color: "white"}}>현재 비밀번호</Form.Label>
+              <Form.Label style={{color: "white", fontSize: "1.2rem"}}>현재 비밀번호</Form.Label>
               <div class="form-floating">
                 <input type="Password" class="form-control was-validate" id="Password" placeholder="Password" required maxlength="32" pattern="[0-9a-zA-Z]{8,}$" title="비밀번호는 8자 이상의 영문 대소문자와 숫자로 이루어질 수 있습니다." onChange={handleInputPassword}/>
                 <label for="floatingPassword" style={{color: "#BDBDBD"}} >현재 비밀번호를 입력해주세요</label>
@@ -117,7 +117,7 @@ function EditPw() {
 
             {/* 신규 비밀번호 관련 */}
             <Form.Group id="password2" className="mb-4">
-              <Form.Label style={{color: "white"}}>신규 비밀번호</Form.Label>
+              <Form.Label style={{color: "white", fontSize: "1.2rem"}}>신규 비밀번호</Form.Label>
               <div class="form-floating">
                 <input type="Password" class="form-control was-validate" id="newPassword" placeholder="newPassword" required maxlength="32" pattern="[0-9a-zA-Z]{8,}$" title="비밀번호는 8자 이상의 영문 대소문자와 숫자로 이루어질 수 있습니다." onChange={handleInputNewPassword}/>
                 <label for="floatingPassword" style={{color: "#BDBDBD"}} >신규 비밀번호를 입력해주세요</label>
@@ -126,7 +126,7 @@ function EditPw() {
 
             {/* 비밀번호 확인 관련 */}
             <Form.Group id="confirmPassword" className="mb-4">
-              <Form.Label style={{color: "white"}}>신규 비밀번호 확인</Form.Label>
+              <Form.Label style={{color: "white", fontSize: "1.2rem"}}>신규 비밀번호 확인</Form.Label>
               <div class="form-floating">
                 <input type="password" class="form-control was-validate" id="rePassword" placeholder="ConfirmPassword" required maxlength="32" pattern="[0-9a-zA-Z]{8,}$" title="비밀번호를 다시 입력해주세요." onChange={handleInputNewPassword}/>
                 <label for="floatingPassword" style={{color: "#BDBDBD"}}>신규 비밀번호를 재입력해주세요</label>
@@ -139,12 +139,12 @@ function EditPw() {
               </div>
               <h2></h2> {/* 여백을 위해 추가 */}
               <div>
-                <Button variant="primary" onClick={confirmPw}>비밀번호 확인</Button>
+                <Button variant="primary" onClick={confirmPw} style={{fontSize: "1.2rem"}}>비밀번호 확인</Button>
               </div>
             </Form.Group>
 
             {/* 비밀번호 변경 관련 */}
-            <Button variant="primary" type="submit" className="w-100" id='EditPw' disabled={true} onClick={handleEditPw}>
+            <Button variant="primary" type="submit" className="w-100" id='EditPw' disabled={true} onClick={handleEditPw} style={{fontSize: "1.2rem"}}>
               비밀번호 변경
             </Button>
           </Form>
