@@ -1,35 +1,27 @@
-import React, { useState, useEffect } from 'react';
+import React, {useEffect, useState} from 'react';
 import { Container, Modal, Button, Row, Col } from 'react-bootstrap';
-import ReactPlayer from 'react-player/lazy';
 
-//자세히 보기
-function DetailCard(props) {
+function GeneralTable(props){
   const [show, setShow] = useState(false);
+  const [data, setData] = useState([]);
 
-  const handleClose = () => setShow(false);
   const handleShow = () => setShow(true);
+  const handleClose = () => setShow(false);
 
-  return (
+  return(
     <>
-      <Button variant="outline-dark" className="video_btn fs-5" onClick={handleShow}>자세히보기</Button>
-      <Modal show={show} className="detail_card" size="lg" onHide={handleClose} animation={false}>
+      <Button variant="outline-dark" className="video_btn" style={{marginLeft: "30rem"}} onClick={handleShow}>자세히보기</Button>
+      <Modal show={show} className="d-flex align-items-center justify-content-center" size="lg" onHide={handleClose} animation={false}>
         <Modal.Header closeButton>
-          <Modal.Title style={{fontSize:"40px"}}>사고기록</Modal.Title>
+          <Modal.Title style={{fontSize:"40px"}}>일반 조회</Modal.Title>
         </Modal.Header>
 
         <Modal.Body>
           <div style={{fontSize:'30px',margin:'10px'}}>{props.time}</div>
-          <div className="detaile_video">
-            <ReactPlayer
-              controls={true}
-              width="100%"
-              height="100%"
-              url={props.video}/>
-          </div>
         </Modal.Body>
-        <hr/>
+
         <Modal.Body>
-          <Container>
+        <Container>
             <Row>
               <Col>
                 <Row>
@@ -57,25 +49,10 @@ function DetailCard(props) {
                   </Col>
               </Row>
               </Col>
-            
-              <Col>
-                <Row>
-                  <Col>
-                  {/* <div style={{fontWeight:'bold',fontSize:'1.2rem'}}>가속도</div> */}
-                  </Col>
-                  <Col>
-                  {/* <div style={{fontWeight:'bold',fontSize:'1.2rem'}}>자이로</div> */}
-                  <br/>
-                  </Col>
-                  <Col>
-                  {/* <div style={{fontWeight:'bold',fontSize:'1.2rem'}}>지자기</div> */}
-                  </Col>
-                </Row>
-              </Col>
             </Row>
           </Container>
         </Modal.Body>
-        
+
         <Modal.Footer>
           <Button variant="secondary" onClick={handleClose}>
             닫기
@@ -84,6 +61,6 @@ function DetailCard(props) {
       </Modal>
     </>
   );
-}
+};
 
-export default DetailCard;
+export default GeneralTable;

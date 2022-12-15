@@ -1,50 +1,41 @@
-import React from 'react'
-import '../styles/AccidentCard.css';
-import Button from 'react-bootstrap/Button';
-import gachon from '../images/gachon.png';
+import React, { useEffect, useState } from 'react'
 import ReactPlayer from 'react-player/lazy';
 import DetailCard from './DetailCard';
-import axios from 'axios';
-import { useEffect, useState } from 'react';
-// import AccidentCard from './AccidentCard';
-// import axios from 'axios';
+import Calender from './Calender';
 
-const AccidentCard =({data})=> {
-const [videoData, setVideoData]= useState();
+const AccidentCard =({time, sensors, imei, video})=> {
+  const URL = "http://141.164.35.18:8080/video/";
 
-    const videoUrl = "http://localhost:8080/video";
-    // axios.post(videoUrl, event.target.files[0], {
-    //     headers: { "Content-Type":  `multipart/form-data`}
-    //     }
-    // ).then((res) => {
-    //           console.log(res);
-    //         },[])
-   const url='videos/video2.mp4'
 
-    return (
-    <li className="card">   
-        <div className="img_set">
+  function time_cal(time){ //시간 형변환
+    let result = time.slice(0,4)+'-'+time.slice(4,6)+'-'+time.slice(6,8)+' '+time.slice(8,10)+':'+time.slice(10,12); 
+    return result;
+  }
+
+ 
+  return (
+    <div className="card mb-3">
+      <div className="img_set">
         <ReactPlayer
-           width="100%"
-           height="100%"
-           className='react-player'
-           url={videoUrl}
-        // url='video/video2.mp4'
-           />
-
-        </div>
-        <dl>
-            <dt >{data.date}</dt>
-            <dd>{data.acdContent}</dd>
-        </dl>
-        <DetailCard
-        date={data.date}
-        url={url}
-        acdContent={data.acdContent}
+          width="w-100"
+          height="h-100"
+          className='react-player'
+          url={URL+video+'.mp4'}
         />
-    </li>
-    )
+      </div>
+      <hr/>
+      <div>
+        <p className='fw-bold fs-3'>{time_cal(time)}</p>
+      </div>
+
+      <DetailCard
+        time={time_cal(time)}
+        video={URL+video+'.mp4'}
+        sensors={sensors}
+        
+      />
+    </div>
+  )
 }
 
 export default AccidentCard;
-

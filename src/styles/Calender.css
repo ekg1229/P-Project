@@ -2,20 +2,34 @@
     width:auto;
     margin-right: 15px;
 }
-.select_date{
-    height: 22px;
+
+.datepicker_place{
+    height: 40px;
+    width: 200px;
     padding: 6px 12px;
     font-size: 14px;
     text-align: center;
     border: 1px solid #e5e5e5;
     outline: none;
     cursor: pointer;
+    margin-bottom:20px;
 }
-.between_date{
-    display: table;
+.date_between{
     padding: 8px 12px;
-    background-color: #e5e5e5;
-    border: 1px solid #e5e5e5;
+
     font-size: 14px;
+
+    color:white;
+
     cursor: pointer;
+}
+.date_btn{
+  color: "white";
+  background: "#999";
+  margin:"0 0 0 0.5rem";
+  padding: ".2rem .75rem";
+  border: "1px solid #999";
+  border-radius: ".25rem";
+  font-size: "1rem";
+  line-height: 1.5;
 }
