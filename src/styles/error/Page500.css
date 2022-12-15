@@ -8,8 +8,7 @@
 } */
 
 .error-header {
-background: #fff;
-height: 180px;
+  height: 180px;
 }
 
 .error-container {
@@ -18,7 +17,7 @@ text-align: center;
 }
 
 .error-container h1 {
-color: #39bbdb;
+color: #616577;
 }
 
 .error-container h1 {
@@ -34,16 +33,11 @@ padding: 30px 0;
 }
 
 .error-container h2 {
+color: #a02121;
 font-size: 58px;
 font-weight: 300;
 margin: 0;
 text-transform: uppercase;
-}
-
-.error-container p.description {
-color: #ff0202;
-font-size: 40px;
-margin: 0;
 }
 
 .return-btn, .return-btn:hover {
@@ -64,5 +58,9 @@ font-weight: 300;
 }
 
 a:hover{
-  text-decoration:none;    
+text-decoration:none;    
+}
+
+.fa.fa-home.fa-2x{
+width: 2rem;
 }

@@ -1,7 +1,7 @@
 import {React, useState} from 'react';
 import {Link} from 'react-router-dom';
-import axios from 'axios';
 import {Container, Col, Form, Button} from 'react-bootstrap';
+import axios from 'axios';
 import Popup from "../../components/Popup";
 
 //비밀번호 찾기 페이지
@@ -23,30 +23,20 @@ function ForgotInfo() {
       }
     })
     .then((res) => {
-      console.log(res);
       if(res.status === 200){
         setPopup({
           open: true,
           title: "비밀번호 찾기 성공!",
-          message: "비밀번호가 변경되었습니다. 이메일을 확인해주세요."
-        })
-        //go to signin page
-        window.location.href="/signin"
-      }
-      else{
-        setPopup({
-          open: true,
-          title: "비밀번호 찾기 오류",
-          message: "이메일을 확인해주세요."
-        })
-      }
+          message: "비밀번호가 변경되었습니다. 이메일을 확인해주세요.",
+          callback: "/signin"
+        });
+      }      
     })
     .catch((err) => {
-      console.log(err);
       setPopup({
         open: true,
         title: "비밀번호 찾기 오류",
-        message: "서버에 문제가 있습니다. 다시 시도해주세요."
+        message: "메일 보내기에 실패했거나, 서버에 문제가 있습니다."
       });
     })
   }
@@ -54,6 +44,9 @@ function ForgotInfo() {
   return (
     <div className="wrapper">
       <section className="main_visual">
+        <div className="text-center text-md-center mb-4 mt-md-0">
+          <h1 className="mb-0" style={{color: "white", marginTop: "1.2rem"}}> 블록체인 블랙박스</h1>
+        </div>
         <Container>
           <Col xs={12} className="d-flex align-items-center justify-content-center">
             <div className="shadow-soft border rounded border-light p-4 p-lg-5 w-100 fmxw-500" style={{opacity: 0.9, border: "1px solid #282c34", background: "#282c34"}}>
@@ -89,7 +82,7 @@ function ForgotInfo() {
               </div> */}
 
               <div className="d-flex justify-content-center align-items-center mt-4">
-                <span className="fw-normal" style={{color: "white"}}>
+                <span className="fw-normal" style={{color: "white", fontSize: "1.2rem"}}>
                   비밀번호가 기억나셨나요? &nbsp;
                   <Link to="/signin" className="fw-bold">
                     {`로그인`}

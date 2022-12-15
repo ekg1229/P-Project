@@ -1,7 +1,7 @@
 import {React, useState} from 'react';
 import {Link} from 'react-router-dom';
-import axios from 'axios';
 import {Container, Col, Form, Button} from 'react-bootstrap';
+import axios from 'axios';
 import Popup from "../../components/Popup";
 
 //회원가입 페이지
@@ -71,16 +71,25 @@ function SignUp() {
   }
 
   const confirmPw = () => {
-    var pw = document.getElementById("Password").value;
-    var rpw = document.getElementById("rePassword").value;
+    let pw = document.getElementById("Password").value;
+    let rpw = document.getElementById("rePassword").value;
 
     if(pw === "" || rpw === ""){ //null input
       document.getElementById("signup").disabled = true;
+    }
+    else if(pw.length < 8 || rpw.length < 8){ //8자 이하 입력
+      document.getElementById("signup").disabled = true; //제출 금지
+      document.getElementById("CheckTrue").style.display="none" //result of confirm print
+      document.getElementById("CheckFalse").style.display="none"
+      document.getElementById("CheckLength").style.display="block"
+      document.getElementById("Password").readOnly= false;
+      document.getElementById("rePassword").readOnly= false;
     }
     else if(pw !== rpw){ //not correct
       document.getElementById("signup").disabled = true; //제출 금지
       document.getElementById("CheckTrue").style.display="none" //result of confirm print
       document.getElementById("CheckFalse").style.display="block"
+      document.getElementById("CheckLength").style.display="none"
       document.getElementById("Password").readOnly= false;
       document.getElementById("rePassword").readOnly= false;
     }
@@ -89,6 +98,7 @@ function SignUp() {
       document.getElementById("signup").disabled = false; //회원가입 버튼 활성화(비밀번호 검증이 끝났으므로)
       document.getElementById("CheckTrue").style.display="block" //result of confirm print
       document.getElementById("CheckFalse").style.display="none"
+      document.getElementById("CheckLength").style.display="none"
       document.getElementById("Password").readOnly= true; //비밀번호 입력 수정 불가
       document.getElementById("rePassword").readOnly= true; //비밀번호 재입력 수정 불가
     }
@@ -98,11 +108,14 @@ function SignUp() {
   return (
     <div className="wrapper">
       <section className="main_visual">
+        <div className="text-center text-md-center mb-4 mt-md-0">
+          <h1 className="mb-0" style={{color: "white", marginTop: "1.2rem"}}> 블록체인 블랙박스</h1>
+        </div>
         <Container>
           <Col xs={12} className="d-flex align-items-center justify-content-center">
             <div className="mb-4 mb-lg-0 shadow-soft border rounded border-light p-4 p-lg-5 w-100 fmxw-500" style={{opacity: 0.9, border: "1px solid #282c34", background: "#282c34"}}>
               <div className="text-center text-md-center mb-4 mt-md-0">
-                <h3 className="mb-0" style={{color: "white"}}>회원가입 페이지</h3>
+                <h3 className="mb-0" style={{color: "white"}}>회원가입</h3>
               </div>
               <Form className="mt-4" onSubmit={(e) => {handleSubmit(e)}}>
                 {/* 이메일 관련 */}
@@ -141,6 +154,9 @@ function SignUp() {
                     <div class="invalid-feedback" id="CheckFalse">
                       비밀번호가 일치하지 않습니다.
                     </div>
+                    <div class="invalid-feedback" id="CheckLength">
+                      8자 이상 입력해주세요.
+                    </div>
                   </div>
                   <h2></h2> {/* 여백을 위해 추가 */}
                   <div>
@@ -173,7 +189,7 @@ function SignUp() {
               </Form>
 
               <div className="d-flex justify-content-center align-items-center mt-4">
-                <span className="fw-normal" style={{color: "white"}}>
+                <span className="fw-normal" style={{color: "white", fontSize: "1.2rem"}}>
                   이미 회원이신가요? &nbsp;
                   <Link to="/signin" className="fw-bold">
                     {`로그인`}

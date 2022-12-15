@@ -19,20 +19,19 @@ function Page400() {
   });
 
   return (
-    <>
-      <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css" rel="stylesheet"/>
-      <div class="error-header"></div>
-      <div class="container">
-          <section class="error-container text-center">
-              <h1>토큰 에러</h1>
-              <div class="error-divider">
-                  <h2>10초 후에 메인 페이지로 이동됩니다.</h2>
-                  {/* <p class="description">10초 후에 메인 페이지로 이동됩니다.</p> */}
-              </div>
-              <a href="/main" class="return-btn" style={{fontSize: "2rem"}}><i class="fa fa-home fa-2x"></i>Home</a>
-          </section>
-      </div>
-    </>
+    <div className="wrapper">
+      <section className="main_visual">
+        <div class="container" style={{marginTop: "180px"}}>
+            <section class="error-container text-center" style={{background: "#282c34", opacity: 0.9}}>
+                <h1>토큰 에러</h1>
+                <div class="error-divider">
+                    <h2>10초 후에 메인 페이지로 이동됩니다.</h2>
+                </div>
+                <a href="/main" class="return-btn" style={{fontSize: "2rem"}}>Home</a>
+            </section>
+        </div>
+      </section>
+    </div>
   );
 }
 
