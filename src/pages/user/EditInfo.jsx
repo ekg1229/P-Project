@@ -28,12 +28,9 @@ function EditInfo() {
   const getData = () => {
     axios.get("/api/auth/personelInfo")
     .then(res => {
-      console.log("success");
       setEmail(res.data.email);
     })
     .catch(res => {
-      console.log("error");
-      console.log(res);
       setPopup({
         open: true,
         title: "개인정보 확인 오류",
@@ -54,12 +51,9 @@ function EditInfo() {
       }
     })
     .then(res => {
-      console.log("success");
       setName(res.data.name);
     })
     .catch(res => {
-      console.log("error");
-      console.log(res);
       setPopup({
         open: true,
         title: "이름 수정 오류",
@@ -80,12 +74,9 @@ function EditInfo() {
       }
     })
     .then(res => {
-      console.log("success");
       setName(res.data.name);
     })
     .catch(res => {
-      console.log("error");
-      console.log(res);
       setPopup({
         open: true,
         title: "나이 수정 오류",
@@ -96,9 +87,6 @@ function EditInfo() {
 
   useEffect(()=>{
     getData();
-    return () => {
-      console.log("개인정보 수정 페이지 종료");
-    }
   }, []);
 
   return (
