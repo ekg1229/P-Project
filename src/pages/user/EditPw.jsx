@@ -65,7 +65,7 @@ function EditPw() {
     if(npw === "" || rpw === ""){ //null input
       document.getElementById("EditPw").disabled = true;
     }
-    else if(pw.length < 8 || rpw.length < 8){ //8자 이하 입력
+    else if(npw.length < 8 || rpw.length < 8){ //8자 이하 입력
       document.getElementById("signup").disabled = true; //제출 금지
       document.getElementById("CheckTrue").style.display="none" //result of confirm print
       document.getElementById("CheckFalse").style.display="none"
