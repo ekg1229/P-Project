@@ -2,8 +2,8 @@ import React, {useState} from 'react';
 import {Container, Nav} from 'react-bootstrap';
 import Header from '../../components/Header';
 import Footer from '../../components/Footer';
+import TabContent from '../../components/TabContent';
 import setAuthorizationToken from '../../utils/setAuthorizationToken';
-import TabContent from '../../components/TabContent'; 
 import "../../styles/user/UserInfo.css";
 
 //내 정보 페이지
