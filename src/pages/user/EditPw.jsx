@@ -20,10 +20,6 @@ function EditPw() {
   // 비밀번호 변경 버튼 클릭 이벤트
   const handleEditPw = (e) => {
     e.preventDefault(); //submit default 제출 막음
-    console.log("click_EditPw");
-
-    console.log(password);
-    console.log(newPassword);
 
     //axios 통신
     axios.put("/api/auth/password", {
@@ -37,12 +33,12 @@ function EditPw() {
       }
     })
     .then((res) => {
-      console.log(res);
       if (res.data === true) {
         setPopup({
           open: true,
           title: "비밀번호 변경 성공!",
-          message: "비밀번호 변경에 성공했습니다."
+          message: "비밀번호 변경에 성공했습니다.",
+          callback: "/userinfo"
         });
       }
       else if(res.data === null){
@@ -54,7 +50,6 @@ function EditPw() {
       }
     })
     .catch((err) => {
-      console.log(err);
       setPopup({
         open: true,
         title: "비밀번호 변경 오류",
@@ -65,17 +60,24 @@ function EditPw() {
 
   const confirmPw = () => {
     var npw = document.getElementById("newPassword").value;
-    console.log("npw: "+npw);
     var rpw = document.getElementById("rePassword").value;
-    console.log("rpw: "+rpw);
 
     if(npw === "" || rpw === ""){ //null input
       document.getElementById("EditPw").disabled = true;
+    }
+    else if(pw.length < 8 || rpw.length < 8){ //8자 이하 입력
+      document.getElementById("signup").disabled = true; //제출 금지
+      document.getElementById("CheckTrue").style.display="none" //result of confirm print
+      document.getElementById("CheckFalse").style.display="none"
+      document.getElementById("CheckLength").style.display="block"
+      document.getElementById("Password").readOnly= false;
+      document.getElementById("rePassword").readOnly= false;
     }
     else if(npw !== rpw){ //not correct
       document.getElementById("EditPw").disabled = true; //제출 금지
       document.getElementById("CheckTrue").style.display="none" //result of confirm print
       document.getElementById("CheckFalse").style.display="block"
+      document.getElementById("CheckLength").style.display="none"
       document.getElementById("newPassword").readOnly= false;
       document.getElementById("rePassword").readOnly= false;
     }
@@ -84,17 +86,14 @@ function EditPw() {
       document.getElementById("EditPw").disabled = false; //비밀번호 변경 버튼 활성화(비밀번호 검증이 끝났으므로)
       document.getElementById("CheckTrue").style.display="block" //result of confirm print
       document.getElementById("CheckFalse").style.display="none"
+      document.getElementById("CheckLength").style.display="none"
       document.getElementById("newPassword").readOnly= true; //비밀번호 입력 수정 불가
       document.getElementById("rePassword").readOnly= true; //비밀번호 재입력 수정 불가
     }
-    console.log(<confirm1/>);
     return <confirm1/>
   }
 
   useEffect(()=>{
-    return () => {
-      console.log("비밀번호 변경 페이지 종료");
-    }
   }, []);
 
   return (
@@ -135,6 +134,9 @@ function EditPw() {
                 </div>
                 <div class="invalid-feedback" id="CheckFalse">
                   비밀번호가 일치하지 않습니다.
+                </div>
+                <div class="invalid-feedback" id="CheckLength">
+                  8자 이상 입력해주세요.
                 </div>
               </div>
               <h2></h2> {/* 여백을 위해 추가 */}
