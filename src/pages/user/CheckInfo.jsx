@@ -1,5 +1,5 @@
 import React, {useState, useEffect} from 'react';
-import {Container, Col, Form, Button} from 'react-bootstrap';
+import {Container, Col, Form} from 'react-bootstrap';
 import axios from 'axios';
 import Popup from "../../components/Popup";
 
@@ -15,14 +15,11 @@ function EditInfo() {
   const getData = () => {
     axios.get("/api/auth/personelInfo")
     .then(res => {
-      console.log("success");
       setEmail(res.data.email);
       setName(res.data.name);
       setAge(res.data.age);
     })
     .catch(res => {
-      console.log("error");
-      console.log(res);
       setPopup({
         open: true,
         title: "개인정보 확인 오류",
@@ -33,10 +30,6 @@ function EditInfo() {
 
   useEffect(()=>{
     getData();
-
-    return () => {
-      console.log("개인정보 확인 페이지 종료");
-    }
   }, []);
 
   return (
