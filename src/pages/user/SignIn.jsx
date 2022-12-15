@@ -1,7 +1,7 @@
 import {React, useState} from 'react';
 import {Link} from 'react-router-dom';
-import axios from 'axios';
 import {Container, Col, Form, Card, Button} from 'react-bootstrap';
+import axios from 'axios';
 import Popup from "../../components/Popup";
 
 //로그인 페이지
@@ -19,13 +19,7 @@ function SignIn() {
   };
 
   // login 버튼 클릭 이벤트
-  const onClickLogin = () => {
-    console.log('Click login');
-  }
-
-  // login 버튼 클릭 이벤트
   const handleLogin = () => {
-    console.log("click");
     //axios 통신
     axios.post('/api/auth/login', {
       email: id,
@@ -38,8 +32,6 @@ function SignIn() {
       }
     })
     .then((res) => {
-      console.log("success");
-      console.log(res);
       const {accessToken} = JSON.stringify(res.data.accessToken);
       axios.defaults.headers.common['Authorization'] = `Bearer ${accessToken}`;
 
@@ -52,8 +44,6 @@ function SignIn() {
       }
     })
     .catch((err) => {
-      console.log("error");
-      console.log(err)
       setPopup({
         open: true,
         title: "로그인 오류",
