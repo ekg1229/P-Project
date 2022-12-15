@@ -13,11 +13,12 @@
 }
 #footer .right{
     float:right;
-    width:50%;
+    /*width:50%;*/
 }
 #footer .right p{
     font-size:14px;
     color:#999;
     padding: 14px 10px 0 0;
     text-align:right;
+    margin-bottom: 0; /* p 태그는 부트스트랩? html? 자체적으로 하단 마진 10px 있음 */
 }
