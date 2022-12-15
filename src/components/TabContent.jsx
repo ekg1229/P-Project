@@ -1,5 +1,4 @@
 import React from "react"
-
 import CheckInfo from '../pages/user/CheckInfo';
 import EditInfo from '../pages/user/EditInfo';
 import EditPw from '../pages/user/EditPw';
