@@ -1,9 +1,9 @@
 import React, {useState, useEffect} from "react";
 import {Container, Col, Form, Button} from 'react-bootstrap';
-import axios from 'axios';
-import "../../styles/user/EditImei.css"
 import trash from "../../images/trash.png"
 import Popup from "../../components/Popup";
+import axios from 'axios';
+import "../../styles/user/EditImei.css"
 
 //Serial 추가/삭제 페이지
 function EditImei() {
@@ -26,8 +26,6 @@ function EditImei() {
       }
     })
     .then((res) => {
-      console.log("success");
-      console.log(res);
       if(res.data == null){
         setPopup({
           open: true,
@@ -53,8 +51,11 @@ function EditImei() {
       }
     })
     .catch((err) => {
-      console.log("error");
-      console.log(err);
+      setPopup({
+        open: true,
+        title: "Serial 추가 실패",
+        message: "Serial 추가에 실패했습니다."
+      });
     })
   }
 
@@ -66,13 +67,9 @@ function EditImei() {
       }
     })
     .then((res) => {
-      console.log("success");
-      console.log(res);
       setData(res.data);
     })
     .catch((err) => {
-      console.log("error");
-      console.log(err);
     })
   }
 
@@ -87,8 +84,6 @@ function EditImei() {
       }
     })
     .then((res) => {
-      console.log("success");
-      console.log(res);
       setData((data) => data.filter((data) => data.imei != imei));
       if(res.data == true){
         setPopup({
@@ -99,17 +94,11 @@ function EditImei() {
       }
     })
     .catch((err) => {
-      console.log("error");
-      console.log(err);
     })
   }
 
   useEffect(() => {
     getImei();
-
-    return () => {
-      console.log("Serial 추가/삭제 페이지 종료");
-    }
   }, []);
 
   return(
@@ -125,7 +114,7 @@ function EditImei() {
             <Form.Group id="confirmimei" className="mb-4">
               <Form.Label style={{color: "white", fontSize: "1.2rem"}}>Serial 추가</Form.Label>
               <div class="form-floating">
-                <input type="text" class="form-control was-validate" id="imei" placeholder="Password" name="imei" pattern="[0-9a-zA-Z]{10}" title="Serial은 숫자, 영문 대소문자로 이루어집니다." onChange={handleImei} readOnly={false}/>
+                <input type="text" class="form-control was-validate" id="imei" placeholder="Password" name="imei" title="Serial은 숫자, 영문 대소문자로 이루어집니다." onChange={handleImei} readOnly={false}/>
                 <label for="floatingPassword" style={{color: "#BDBDBD"}}>Serial Number를 입력해주세요</label>
                 <div class="valid-feedback" id="CheckTrue2">
                   유효한 Serial입니다.
