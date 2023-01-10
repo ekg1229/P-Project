@@ -1,70 +1,29 @@
-# Getting Started with Create React App
+# 2022년도 2학기 P-실무 프로젝트 
+블록체인을 활용한 차량 블랙박스 version 1.0 
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+## 프로젝트 설명
+<p align="center">
+<img src="https://user-images.githubusercontent.com/71758311/211508373-f440d208-903a-49ab-8c48-4c5169bd9e82.png"><br/>
+<서비스 시나리오 아키텍처>
+</p>
+본 프로젝트의 목표는 사고로 인한 블랙박스 메모리 손상 위험을 최소화하는 동시에 블랙박스 자체 저장공간의 한계를 극복하는 것입니다.    
+본 레포지토리에서는 **프론트엔드인 ReactJS**만 다룹니다.
 
-## Available Scripts
+## 화면 설계
+1. 로그인 및 회원가입 페이지
+2. 비밀번호 찾기 페이지
+3. 메인 페이지
+4. 일반 조회 페이지
+5. 사고 조회 페이지
+6. 내 정보 페이지
 
-In the project directory, you can run:
+## 시연 영상 
+<p align="center">https://user-images.githubusercontent.com/71758311/211500432-654fa64d-c37f-497d-86b4-f59262467866.mp4</p>
 
-### `npm start`
+## 개발 스택
+- Framework : Reactjs
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+## 다른 팀원들의 코드
+* [Backend]
+* [Blockchain]
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
-
-### `npm test`
-
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
-
-### `npm run build`
-
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
-
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
-
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
-
-### `npm run eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
-
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
-
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
